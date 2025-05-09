@@ -1,18 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Guru;
+use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class GuruController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.aturguru.index');
+        //
     }
 
     /**
@@ -34,7 +35,7 @@ class GuruController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Guru $guru)
+    public function show(User $admin)
     {
         //
     }
@@ -42,7 +43,7 @@ class GuruController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Guru $guru)
+    public function edit(User $admin)
     {
         //
     }
@@ -50,7 +51,7 @@ class GuruController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Guru $guru)
+    public function update(Request $request, User $admin)
     {
         //
     }
@@ -58,7 +59,7 @@ class GuruController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Guru $guru)
+    public function destroy(User $admin)
     {
         //
     }

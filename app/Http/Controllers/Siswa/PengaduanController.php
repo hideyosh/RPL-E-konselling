@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Siswa;
 
+use App\Http\Controllers\Controller;
 use App\Models\Pengaduan;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,10 @@ class PengaduanController extends Controller
      */
     public function index()
     {
-        //
+        return view('siswa.pengaduan.index', [
+            'pengaduans' => Pengaduan::with('guru')->paginate(10),
+            'title' => 'Tabel Pengaduan'
+        ]);
     }
 
     /**
@@ -20,7 +24,9 @@ class PengaduanController extends Controller
      */
     public function create()
     {
-        //
+        return view('siswa.pengaduan.create', [
+            'title' => 'Buat Pengaduan'
+        ]);
     }
 
     /**
@@ -44,7 +50,10 @@ class PengaduanController extends Controller
      */
     public function edit(pengaduan $pengaduan)
     {
-        //
+        return view('siswa.pengaduan.edit', [
+            'title' => 'Edit Pengaduan',
+            'pengaduans' => $pengaduan
+        ]);
     }
 
     /**
@@ -60,6 +69,7 @@ class PengaduanController extends Controller
      */
     public function destroy(pengaduan $pengaduan)
     {
-        //
+        $pengaduan->delete();
+        return redirect()->route('pengaduan.index');
     }
 }

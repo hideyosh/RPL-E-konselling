@@ -2,8 +2,6 @@
 @source "../views";
 
 /* Preline UI */
-@import "../../node_modules/preline/variants.css";
-@source "../../node_modules/preline/dist/*.js";
+/* @import "./node_modules/preline/variants.css"; */
+/* @import "preline/preline.css"; */
 
-/* Plugins */
-/* @plugin "@tailwindcss/forms"; */

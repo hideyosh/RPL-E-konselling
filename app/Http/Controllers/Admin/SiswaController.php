@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Konselling;
+use App\Http\Controllers\Controller;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 
-class KonsellingController extends Controller
+class SiswaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,7 @@ class KonsellingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(konselling $konselling)
+    public function show(Siswa $siswa)
     {
         //
     }
@@ -42,7 +43,7 @@ class KonsellingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(konselling $konselling)
+    public function edit(Siswa $siswa)
     {
         //
     }
@@ -50,7 +51,7 @@ class KonsellingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, konselling $konselling)
+    public function update(Request $request, Siswa $siswa)
     {
         //
     }
@@ -58,7 +59,7 @@ class KonsellingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(konselling $konselling)
+    public function destroy(Siswa $siswa)
     {
         //
     }

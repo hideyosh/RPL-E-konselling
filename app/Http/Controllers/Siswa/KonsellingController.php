@@ -1,18 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Siswa;
 
-use App\Models\Siswa;
+use App\Http\Controllers\Controller;
+use App\Models\Konselling;
 use Illuminate\Http\Request;
 
-class SiswaController extends Controller
+class KonsellingController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        // return view('siswa.pengaduan.index', [
+        //     'gurus' => Konselling::paginate(10),
+        // ]);
     }
 
     /**
@@ -34,7 +37,7 @@ class SiswaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Siswa $siswa)
+    public function show(konselling $konselling)
     {
         //
     }
@@ -42,7 +45,7 @@ class SiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Siswa $siswa)
+    public function edit(konselling $konselling)
     {
         //
     }
@@ -50,7 +53,7 @@ class SiswaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Siswa $siswa)
+    public function update(Request $request, konselling $konselling)
     {
         //
     }
@@ -58,7 +61,7 @@ class SiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Siswa $siswa)
+    public function destroy(konselling $konselling)
     {
         //
     }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama', 20);
             $table->string('nisn', 12);
             $table->enum('kelas', ['10', '11', '12']);
+            $table->enum('jurusan', ['AKL', 'BDP', 'OTKP', 'DKV', 'RPL']);
             $table->enum('jenis_kelamin', ['laki-laki','perempuan']);
             $table->timestamps();
         });
