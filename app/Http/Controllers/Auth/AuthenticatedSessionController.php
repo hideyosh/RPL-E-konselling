@@ -31,9 +31,9 @@ class AuthenticatedSessionController extends Controller
         $role = Auth::user()->role;
 
         return match ($role) {
-            'guru' => redirect()->intended(route('dashboard-guru', absolute: false)),
-            'siswa' => redirect()->intended(route('dashboard-siswa', absolute: false)),
-            default => redirect()->intended(route('dashboard-admin', absolute: false)),
+            'guru' => redirect()->intended(route('gurudashboard', absolute: false)),
+            'siswa' => redirect()->intended(route('siswadashboard', absolute: false)),
+            default => redirect()->intended(route('admin.dashboard', absolute: false)),
         };
     }
 
