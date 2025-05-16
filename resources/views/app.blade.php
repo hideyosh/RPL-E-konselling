@@ -23,6 +23,7 @@
   <meta property="og:description" content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
   <meta property="og:image" content="https://preline.co/assets/img/og-image.png">
 
+  @vite('resources/css/app.css')
   <!-- Title -->
   <title>Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS</title>
 
@@ -34,6 +35,7 @@
 
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 
   <!-- Theme Check and Update -->
   <script>

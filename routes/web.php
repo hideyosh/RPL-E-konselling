@@ -26,7 +26,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::put('/guru/{guru}', 'updateGuru')->name('guru.update');
             Route::get('/guru/{guru}', 'showGuru')->name('guru.show');
             Route::delete('/guru/{guru}', 'destroyGuru')->name('guru.destroy');
-            
+
             //Siswa Management
             Route::get('/siswa', 'indexSiswa')->name('siswa.index');
             Route::post('/siswa', 'storeSiswa')->name('siswa.store');
@@ -36,8 +36,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
     });
 
-    Route::middleware('siswa')->prefix('siswa')->name('siswwa')->group(function () {
-        Route::resource('pengaduan', PengaduanController::class);
+    Route::middleware('siswa')->prefix('siswa')->name('siswa.')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('siswa.dashboard');
+        })->name('dashboard');
+        // Route
     });
 });
 

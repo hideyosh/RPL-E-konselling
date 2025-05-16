@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
 
         return match ($role) {
             'guru' => redirect()->intended(route('gurudashboard', absolute: false)),
-            'siswa' => redirect()->intended(route('siswadashboard', absolute: false)),
+            'siswa' => redirect()->intended(route('siswa.dashboard', absolute: false)),
             default => redirect()->intended(route('admin.dashboard', absolute: false)),
         };
     }

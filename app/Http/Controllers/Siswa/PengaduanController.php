@@ -24,7 +24,7 @@ class PengaduanController extends Controller
      */
     public function create()
     {
-        return view('siswa.pengaduan.create', [
+        return view('siswa.pengaduan.index', [
             'title' => 'Buat Pengaduan'
         ]);
     }

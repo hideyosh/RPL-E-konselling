@@ -37,7 +37,7 @@
 
                 <!-- Popup -->
                 <div x-show="open" x-transition
-                class="fixed inset-0 flex items-center justify-center z-50" style="background-color: rgba(128, 128, 128, 0.3); display: none"
+                class="fixed inset-0 flex items-center justify-center z-50" style="background-color: #8080804d; display: none"
                 @click.away="open = false">
                     <div class="bg-white p-8 rounded shadow-lg w-96">
                         <div class="flex justify-between items-center">
@@ -81,10 +81,9 @@
                                 </div>
                             </div>
                             <div>
+                                <input type="hidden" name="role" value="siswa">
                                 <label for="role" class="block text-base font-medium mb-2 dark:text-white">Role</label>
-                                <select name="role" class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                    <option selected="">Pilih Role</option>
-                                    <option value="guru">Guru</option>
+                                <select name="role" disabled class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                     <option value="siswa">Siswa</option>
                                 </select>
                             </div>
@@ -233,4 +232,4 @@
     </div>
   </div>
   <!-- End Card -->
-@endsection
+  @endsection

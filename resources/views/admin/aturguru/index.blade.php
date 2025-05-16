@@ -82,10 +82,9 @@
                             </div>
                             <div>
                                 <label for="role" class="block text-base font-medium mb-2 dark:text-white">Role</label>
-                                <select name="role" class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                    <option selected="">Pilih Role</option>
-                                    <option value="guru">Guru</option>
-                                    <option value="siswa">Siswa</option>
+                                <input type="hidden" name="role" value="guru">
+                                <select name="role" disabled class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                    <option value="guru" selected>Guru</option>
                                 </select>
                             </div>
                             <div class="flex justify-end">
@@ -182,6 +181,7 @@
                                                 <div>
                                                     <label for="role" class="block text-base font-medium mb-2 dark:text-white">Role</label>
                                                     <select name="role"  x-model="editGuru.role" class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                        <option :value="editGuru.role">editGuru.role</option>
                                                         <option value="guru">Guru</option>
                                                         <option value="siswa">Siswa</option>
                                                     </select>
