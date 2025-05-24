@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('nama', 20);
-            $table->string('nisn', 12);
-            $table->enum('kelas', ['10', '11', '12']);
-            $table->enum('jurusan', ['AKL', 'BDP', 'OTKP', 'DKV', 'RPL']);
-            $table->enum('jenis_kelamin', ['laki-laki','perempuan']);
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('nama', 20)->nullable();
+            $table->string('nisn', 12)->nullable();
+            $table->enum('kelas', ['10', '11', '12'])->nullable();
+            $table->enum('jurusan', ['AKL', 'BDP', 'OTKP', 'DKV', 'RPL'])->nullable();
+            $table->enum('jenis_kelamin', ['laki-laki','perempuan'])->nullable();
             $table->timestamps();
         });
     }

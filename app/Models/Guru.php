@@ -8,9 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Guru extends Model
 {
-
     protected $fillable = [
-        'users_id',
+        'user_id',
         'nama',
         'nip',
         'telpon',

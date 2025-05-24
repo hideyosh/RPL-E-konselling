@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('guru_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->dateTime('janji_temu');
             $table->string('topik_masalah');
-            $table->enum('status', ['dikonfirmasi', 'menunggu', 'dijadwalkan_ulang']);
+            $table->enum('status', ['menunggu', 'dikonfirmasi', 'dijadwalkan_ulang'])->default('menunggu');
             $table->timestamps();
         });
     }

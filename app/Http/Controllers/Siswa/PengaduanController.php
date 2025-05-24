@@ -15,7 +15,7 @@ class PengaduanController extends Controller
     {
         return view('siswa.pengaduan.index', [
             'pengaduans' => Pengaduan::with('guru')->paginate(10),
-            'title' => 'Tabel Pengaduan'
+            'title' => ' Pengaduan'
         ]);
     }
 

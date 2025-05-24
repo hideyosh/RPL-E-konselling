@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Siswa extends Model
 {
+    protected $fillable = [
+        'user_id',
+        'nama',
+        'nisn',
+        'kelas',
+        'jurusan',
+        'jenis_kelamin'
+    ];
+
     public function User() : BelongsTo {
         return $this->belongsTo(User::class);
     }

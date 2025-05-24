@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Guru;
+use App\Models\Siswa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,14 +13,13 @@ use Illuminate\Validation\Rule;
 class UserController extends Controller
 {
     public function indexGuru() {
-        $users = User::where('role', 'guru')->paginate(10);
         return view('admin.aturguru.index',[
-            'gurus' => $users,
+            'gurus' => User::where('role', 'guru')->paginate(10),
             'title' => 'Table Guru'
         ]);
     }
 
-    public function storeGuru(Request $request, User $guru) {
+    public function storeGuru(Request $request) {
 
         $request->validate([
             'email' => ['required', 'unique:users', 'email'],
@@ -28,9 +29,15 @@ class UserController extends Controller
 
         $store = $request->all();
         $store['password'] = Hash::make($request->password);
-        $guru->create($store);
+        $user = User::create($store);
 
-        return redirect()->route('admin.guru.store');
+        if ($user->role == 'guru') {
+            Guru::create([
+                'user_id' => $user->id
+            ]);
+        }
+
+        return redirect()->route('admin.guru.index');
 
     }
 
@@ -41,7 +48,14 @@ class UserController extends Controller
             'role' => ['required', 'in:admin,guru,siswa']
         ]);
 
-        $update = $request->all();
+        $update = $request->only(['email', 'password', 'role']);
+        if ($request->role !== 'guru') {
+            Guru::where('user_id', $guru->id)->delete();
+            Siswa::firstOrCreate([
+                'user_id' => $guru->id
+            ]);
+        }
+
         if ($request->filled('password')) {
             $update['password'] = Hash::make($request->password);
         } else {
@@ -68,26 +82,31 @@ class UserController extends Controller
     }
 
     public function indexSiswa() {
-        $users = User::where('role', 'siswa')->paginate(10);
         return view('admin.atursiswa.index',[
-            'siswas' => $users,
+            'siswas' => User::where('role', 'siswa')->paginate(10),
             'title' => 'Table Siswa'
         ]);
     }
 
-     public function storeSiswa(Request $request, User $siswa) {
+     public function storeSiswa(Request $request) {
 
         $request->validate([
             'email' => ['required', 'unique:users', 'email'],
-            'password' => ['required'],
+            'password' => 'required',
             'role' => ['required', 'in:admin,guru,siswa']
         ]);
 
         $store = $request->all();
         $store['password'] = Hash::make($request->password);
-        $siswa->create($store);
+        $user = User::create($store);
 
-        return redirect()->route('admin.siswa.store');
+         if ($user->role == 'siswa') {
+            Siswa::create([
+                'user_id' => $user->id
+            ]);
+        }
+
+        return redirect()->route('admin.siswa.index');
 
     }
 
@@ -98,7 +117,15 @@ class UserController extends Controller
             'role' => ['in:admin,guru,siswa']
         ]);
 
-        $update = $request->all();
+        $update = $request->only(['email', 'password', 'role']);
+
+         if ($request->role !== 'siswa') {
+            Siswa::where('user_id', $siswa->id)->delete();
+            Guru::firstOrCreate([
+                'user_id' => $siswa->id
+            ]);
+        }
+
         if ($request->filled('password')) {
             $update['password'] = Hash::make($request->password);
         } else {

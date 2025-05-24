@@ -66,7 +66,7 @@
                             <div class="mb-5">
                                 <label for="password" class="block text-base font-medium mb-2 dark:text-white">Password</label>
                                 <div class="relative">
-                                    <input type="password" name="password" class="py-2.5 sm:py-3 px-4 ps-11 blpassword ock w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                    <input type="password" name="password" class="password py-2.5 sm:py-3 px-4 ps-11 blpassword ock w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                     <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock shrink-0 size-4 text-gray-400" viewBox="0 0 16 16">
                                             <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
@@ -148,7 +148,7 @@
                                             <!-- Form -->
                                              <form :action="`/admin/siswa/${editUser.id}`" method="POST">
                                                 @csrf
-                                                @method('PUT')
+                                                @method('PATCH')
                                                 <div class="mt-5 mb-5">
                                                     <label for="email" class="block text-base font-medium mb-2 dark:text-white">Email address</label>
                                                     <div class="relative">
@@ -181,8 +181,8 @@
                                                 <div>
                                                     <label for="role" class="block text-base font-medium mb-2 dark:text-white">Role</label>
                                                     <select name="role"  x-model="editUser.role" class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                                        <option value="guru">Guru</option>
                                                         <option value="siswa">Siswa</option>
+                                                        <option value="guru">Guru</option>
                                                     </select>
                                                 </div>
                                                 <div class="flex justify-end">

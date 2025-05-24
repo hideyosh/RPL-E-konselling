@@ -4,6 +4,7 @@ use App\Http\Controllers\Siswa\PengaduanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Siswa\DataDiriController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,24 +24,32 @@ Route::middleware(['auth', 'verified'])->group(function () {
             //Guru Management
             Route::get('/guru', 'indexGuru')->name('guru.index');
             Route::post('/guru', 'storeGuru')->name('guru.store');
-            Route::put('/guru/{guru}', 'updateGuru')->name('guru.update');
+            Route::patch('/guru/{guru}', 'updateGuru')->name('guru.update');
             Route::get('/guru/{guru}', 'showGuru')->name('guru.show');
             Route::delete('/guru/{guru}', 'destroyGuru')->name('guru.destroy');
 
             //Siswa Management
             Route::get('/siswa', 'indexSiswa')->name('siswa.index');
             Route::post('/siswa', 'storeSiswa')->name('siswa.store');
-            Route::put('/siswa/{siswa}', 'updateSiswa')->name('siswa.update');
+            Route::patch('/siswa/{siswa}', 'updateSiswa')->name('siswa.update');
             Route::get('/siswa/{siswa}', 'showSiswa')->name('siswa.show');
             Route::delete('/siswa/{siswa}', 'destroySiswa')->name('siswa.destroy');
         });
     });
 
     Route::middleware('siswa')->prefix('siswa')->name('siswa.')->group(function () {
-        Route::get('/dashboard', function () {
-            return view('siswa.dashboard');
-        })->name('dashboard');
-        // Route
+        Route::middleware('dataDiri')->group(function () {
+            Route::view('/dashboard', 'siswa.dashboard')->name('dashboard');
+            Route::controller(PengaduanController::class)->group(function () {
+                Route::get('/pengaduan', 'index')->name('pengaduan.index');
+                Route::post('/pengaduan', 'store')->name('pengaduan.store');
+            });
+        });
+
+        Route::controller(DataDiriController::class)->group(function () {
+            Route::get('/isi-data-diri', 'create')->name('datadiri.create');
+            Route::patch('/isi-data-diri', 'store')->name('datadiri.store');
+        });
     });
 });
 

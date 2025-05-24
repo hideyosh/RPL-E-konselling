@@ -64,6 +64,7 @@
 </head>
 
 <body class="bg-gray-50 dark:bg-neutral-900">
+  @include('sweetalert2::index')
   @include('partials.navbar')
 
   <!-- ========== MAIN CONTENT ========== -->
@@ -102,6 +103,16 @@
 
   <!-- Content -->
   <div class="w-full lg:ps-64">
+    @if (session('warning'))
+        <script>
+            Swal.fire({
+                icon: 'warning',
+                title: 'Perhatian!',
+                text: '{{ session('warning') }}',
+                confirmButtonText: 'Isi Sekarang'
+            });
+        </script>
+    @endif
     @yield('content')
   </div>
   <!-- End Content -->
@@ -123,7 +134,7 @@
 
   <script>
     function togglePassword() {
-        const passwordInput = document.getElementsByClassName("password");
+        const passwordInput = document.querySelector(".password");
         const eyeOpen = document.getElementById("eyeIcon");
         const isPassword = passwordInput.type === "password";
 

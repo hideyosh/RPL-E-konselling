@@ -21,7 +21,7 @@
                       <path d="M5 12h14" />
                       <path d="M12 5v14" />
                     </svg>
-                    Tambah Siswa
+                    Buat Aduan
                   </button>
                 </div>
 
@@ -49,7 +49,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <form action="{{ route('admin.siswa.store') }}" method="POST">
+                        <form action="{{ route('siswa.pengaduan.store') }}" method="POST">
                             @csrf
                              <div class="mt-5 mb-5">
                                 <label for="email" class="block text-base font-medium mb-2 dark:text-white">Email address</label>
@@ -110,22 +110,24 @@
                     <thead>
                     <tr>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">No</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Email</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Role</th>
+                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Pengaduan</th>
+                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Guru</th>
+                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Status</th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Action</th>
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                    @foreach ($siswas as $siswa)
+                    @foreach ($pengaduans as $pengaduan)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $siswas->firstItem() + $loop->index }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $siswa->email }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $siswa->role }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $pengaduans->firstItem() + $loop->index }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->isi_pengaduan }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->guru->nama }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->status }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex justify-end">
                                <!-- Tombol -->
                                 <div x-data="{ open : false, editUser: {} }">
-                                    <button @click="open = true; editUser = {{ json_encode($siswa) }}" class="inline-block p-2" >
+                                    <button @click="open = true; editUser = {{ json_encode($pengaduan) }}" class="inline-block p-2" >
                                         <i class="bi bi-pencil-fill text-blue-600 text-lg"></i>
                                     </button>
 
@@ -181,8 +183,8 @@
                                                 <div>
                                                     <label for="role" class="block text-base font-medium mb-2 dark:text-white">Role</label>
                                                     <select name="role"  x-model="editUser.role" class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                                        <option value="guru">Guru</option>
                                                         <option value="siswa">Siswa</option>
+                                                        <option value="guru">Guru</option>
                                                     </select>
                                                 </div>
                                                 <div class="flex justify-end">
@@ -232,4 +234,4 @@
     </div>
   </div>
   <!-- End Card -->
-@endsection
+  @endsection

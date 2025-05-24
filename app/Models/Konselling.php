@@ -6,5 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Konselling extends Model
 {
-    //
+    // protected $filliable = [
+
+    // ]
 }

@@ -1,0 +1,35 @@
+@startuml
+
+abstract class Controller {
+
+}
+Class DashboardController {
+    +index()
+}
+
+Class UserModel {
+    +id
+    #email
+    #password
+    #role
+}
+
+Class UserController {
+    +indexGuru()
+    +storeGuru()
+    +updateGuru()
+    +showGuru()
+    +destroyGuru()
+    +indexSiswa()
+    +storeSiswa()
+    +updateSiswa()
+    +showSiswa()
+    +destroySiswa()
+}
+
+
+DashboardController --|> Controller
+UserController --|> Controller
+
+
+@enduml
