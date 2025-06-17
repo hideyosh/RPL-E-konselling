@@ -3,73 +3,53 @@
 namespace App\Http\Controllers\Siswa;
 
 use App\Http\Controllers\Controller;
+use App\Models\Guru;
 use App\Models\Pengaduan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PengaduanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
+    public function index() {
         return view('siswa.pengaduan.index', [
-            'pengaduans' => Pengaduan::with('guru')->paginate(10),
+            'pengaduans' => Pengaduan::with('guru')->where('siswa_id', Auth::user()->siswa->id)->paginate(10),
+            'gurus' => Guru::all(),
             'title' => ' Pengaduan'
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('siswa.pengaduan.index', [
-            'title' => 'Buat Pengaduan'
+    public function store(Request $request) {
+        $request->validate([
+            'guru_id' => 'required',
+            'isi_pengaduan' => 'required',
         ]);
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(pengaduan $pengaduan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(pengaduan $pengaduan)
-    {
-        return view('siswa.pengaduan.edit', [
-            'title' => 'Edit Pengaduan',
-            'pengaduans' => $pengaduan
+        Pengaduan::create([
+            'siswa_id' => Auth::user()->siswa->id,
+            'guru_id' => $request->guru_id,
+            'isi_pengaduan' => $request->isi_pengaduan
         ]);
+
+         return redirect()->back()->with('success', 'Pengaduan berhasil dikirim.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, pengaduan $pengaduan)
-    {
-        //
+    public function update(Request $request, Pengaduan $pengaduan) {
+        $request->validate([
+            'guru_id' => 'required',
+            'isi_pengaduan' => 'required',
+        ]);
+
+        $pengaduan->update([
+            'guru_id' => $request->guru_id,
+            'isi_pengaduan' => $request->isi_pengaduan
+        ]);
+
+        return redirect()->back()->with('success', 'Pengaduan berhasil diupdate.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(pengaduan $pengaduan)
-    {
+    public function destroy(Pengaduan $pengaduan) {
         $pengaduan->delete();
-        return redirect()->route('pengaduan.index');
+        return redirect()->route('siswa.pengaduan.index');
     }
 }
+

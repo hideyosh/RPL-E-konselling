@@ -5,6 +5,7 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\DataDiriMiddleware;
+use App\Http\Middleware\GuruMiddleware;
 use App\Http\Middleware\SiswaMiddleware;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -17,7 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => AdminMiddleware::class,
             'siswa' => SiswaMiddleware::class,
-            'dataDiri' => DataDiriMiddleware::class
+            'dataDiri' => DataDiriMiddleware::class,
+            'guru' => GuruMiddleware::class,
         ]);
     })
 

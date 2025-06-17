@@ -17,10 +17,10 @@ class Siswa extends Model
         'jenis_kelamin'
     ];
 
-    public function User() : BelongsTo {
+    public function user() : BelongsTo {
         return $this->belongsTo(User::class);
     }
-    public function Pengaduan() : HasMany {
+    public function pengaduan() : HasMany {
         return $this->hasMany(Pengaduan::class);
     }
 }

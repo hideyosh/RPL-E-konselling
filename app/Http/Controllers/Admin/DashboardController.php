@@ -10,10 +10,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard', [
+        return view('dashboard', [
             'gurus' => User::where('role', 'guru')->count(),
             'siswas' => User::where('role', 'siswa')->count(),
-            'users' => User::latest()->paginate(10)
+            'users' => User::where('role', '!=', 'admin')->latest()->paginate(10)
         ]);
     }
 }
