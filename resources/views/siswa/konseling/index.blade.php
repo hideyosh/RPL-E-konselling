@@ -21,7 +21,7 @@
                       <path d="M5 12h14" />
                       <path d="M12 5v14" />
                     </svg>
-                    Buat Aduan
+                    Buat Janji Temu
                   </button>
                 </div>
 
@@ -41,7 +41,7 @@
                 @click.away="open = false">
                     <div class="bg-white p-8 rounded shadow-lg w-96">
                         <div class="flex justify-between items-center">
-                            <h2 class="text-xl font-bold">Tambah Pengaduan</h2>
+                            <h2 class="text-xl font-bold">Tambah Janji Temu</h2>
                              <!-- Tombol X -->
                             <button @click="open = false" class="block top-3 right-3 text-gray-500 hover:text-gray-700">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -49,7 +49,7 @@
                                 </svg>
                             </button>
                         </div>
-                        <form action="{{ route('siswa.pengaduan.store') }}" method="POST">
+                        <form action="{{ route('siswa.konseling.store') }}" method="POST">
                             @csrf
                              <div class="mt-5 mb-5">
                                 <label for="guru" class="block text-base font-medium mb-2 dark:text-white">Guru</label>
@@ -60,9 +60,25 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="mt-5 mb-5">
+                                <label for="janji_temu" class="block text-sm font-medium mb-2 dark:text-white">Tanggal Konseling</label>
+                                 <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                         <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                    </svg>
+                                </div>
+                               <input type="date" id="janji_temu" name="janji_temu" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                            </div>
                             <div>
-                                <label for="isi_pengaduan" class="block text-sm font-medium mb-2 dark:text-white">Isi Pengaduan</label>
-                                <textarea name="isi_pengaduan" id="textarea-label" class="py-2 px-3 sm:py-3 sm:px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Tulis isi pengaduan disini..."></textarea>
+                                <label for="topik_masalah" class="block text-sm font-medium mb-2 dark:text-white">Topik Masalah</label>
+                                 <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                         <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                                    </svg>
+                                </div>
+                               <div class="max-w-sm space-y-3">
+                                    <textarea id="topik_masalah" name="topik_masalah" class="py-2 px-3 sm:py-3 sm:px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Isi Topik Masalah"></textarea>
+                               </div>
                             </div>
                             <div class="flex justify-end">
                                 <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
@@ -87,24 +103,26 @@
                     <thead>
                     <tr>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">No</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Pengaduan</th>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Guru</th>
+                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Janji Temu</th>
+                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Topik Masalah</th>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Status</th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Action</th>
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                    @foreach ($pengaduans as $pengaduan)
+                    @foreach ($konselings as $konseling)
                     <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $pengaduans->firstItem() + $loop->index }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->isi_pengaduan }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->guru->nama }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->status }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $konselings->firstItem() + $loop->index }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->guru->nama }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->janji_temu }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->topik_masalah }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->status }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex justify-end">
                                <!-- Tombol -->
                                 <div x-data="{ open : false, editUser: {} }">
-                                    <button @click="open = true; editUser = {{ json_encode($pengaduan) }}" class="inline-block p-2" >
+                                    <button @click="open = true; editUser = {{ json_encode($konseling) }}" class="inline-block p-2" >
                                         <i class="bi bi-pencil-fill text-blue-600 text-lg"></i>
                                     </button>
 
@@ -173,13 +191,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <form action="{{ route('admin.siswa.destroy', $siswa->id) }}" method="POST">
+                                <form action="{{ route('siswa.konseling.destroy', $konseling->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <button href="{{ route('logout')}}"  onclick="return confirm('Apakah anda yakin akan menghapus guru ini?')" class="inline-block p-2">
                                         <i class="bi bi-trash-fill text-red-600 text-lg"></i>
                                     </button>
-                                </form> --}}
+                                </form>
                             </div>
                         </td>
                     </tr>

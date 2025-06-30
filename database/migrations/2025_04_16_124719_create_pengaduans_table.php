@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('isi_pengaduan');
             $table->enum('status', ['belum dibaca', 'dibaca'])->default('belum dibaca');
             $table->timestamps();
-
         });
     }
 

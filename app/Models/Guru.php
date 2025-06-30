@@ -24,4 +24,8 @@ class Guru extends Model
         return $this->hasMany(Pengaduan::class);
     }
 
+    public function konseling() : HasMany {
+        return $this->hasMany(Konseling::class);
+    }
+
 }

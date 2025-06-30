@@ -8,8 +8,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index()
-    {
+    public function index() {
         return view('dashboard', [
             'gurus' => User::where('role', 'guru')->count(),
             'siswas' => User::where('role', 'siswa')->count(),

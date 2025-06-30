@@ -7,23 +7,18 @@ use App\Http\Controllers\Admin\UserController;
 //Controller Siswa
 use App\Http\Controllers\Siswa\PengaduanController as SiswaPengaduanController;
 use App\Http\Controllers\Siswa\DataDiriController as SiswaDataDiriController;
+use App\Http\Controllers\Siswa\KonselingController as SiswaKonselingController;
 
 //Controller Guru
 use App\Http\Controllers\Guru\PengaduanController as GuruPengaduanController;
 use App\Http\Controllers\Guru\DataDiriController as GuruDataDiriController;
 
 use App\Http\Controllers\ProfileController;
-use App\Models\Guru;
-use App\Models\Pengaduan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     //Admin
@@ -54,6 +49,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::post('/pengaduan/{pengaduan}', 'update')->name('pengaduan.update');
                 Route::delete('/pengaduan/{pengaduan}', 'destroy')->name('pengaduan.destroy');
             });
+            Route::controller(SiswaKonselingController::class)->group(function () {
+                Route::get('/konseling', 'index')->name('konseling.index');
+                Route::post('/konseling', 'store')->name('konseling.store');
+            });
         });
         Route::controller(SiswaDataDiriController::class)->group(function () {
             Route::get('/isi-data-diri', 'create')->name('datadiri.create');
@@ -75,10 +74,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         });
     });
 });
-
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

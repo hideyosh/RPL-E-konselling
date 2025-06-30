@@ -10,9 +10,18 @@ use Illuminate\Http\Request;
 
 class PengaduanController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
+        $query =  Pengaduan::with('guru')->where('siswa_id', Auth::user()->siswa->id)->latest();
+
+        if ($request->has('status')) {
+            $status = $request->input('status');
+            $query->whereIn('status', $status);
+        }
+
+        $pengaduans = $query->paginate(10);
+
         return view('siswa.pengaduan.index', [
-            'pengaduans' => Pengaduan::with('guru')->where('siswa_id', Auth::user()->siswa->id)->paginate(10),
+            'pengaduans' => $pengaduans,
             'gurus' => Guru::all(),
             'title' => ' Pengaduan'
         ]);
@@ -30,7 +39,7 @@ class PengaduanController extends Controller
             'isi_pengaduan' => $request->isi_pengaduan
         ]);
 
-         return redirect()->back()->with('success', 'Pengaduan berhasil dikirim.');
+        return redirect()->back()->with('success', 'Pengaduan berhasil dikirim.');
     }
 
     public function update(Request $request, Pengaduan $pengaduan) {

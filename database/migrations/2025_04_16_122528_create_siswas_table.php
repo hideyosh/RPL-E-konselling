@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('siswas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('nama', 20)->nullable();
-            $table->string('nisn', 12)->nullable();
+            $table->string('nama', 50)->nullable();
+            $table->string('nisn', 20)->nullable();
             $table->enum('kelas', ['10', '11', '12'])->nullable();
             $table->enum('jurusan', ['AKL', 'BDP', 'OTKP', 'DKV', 'RPL'])->nullable();
             $table->enum('jenis_kelamin', ['laki-laki','perempuan'])->nullable();

@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Pengaduan extends Model
+class Konseling extends Model
 {
     protected $fillable = [
         'siswa_id',
         'guru_id',
-        'isi_pengaduan',
-        'status',
+        'janji_temu',
+        'topik_masalah',
+        'status'
     ];
 
     public function siswa() : BelongsTo {
