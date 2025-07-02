@@ -21,7 +21,7 @@ class KonselingController extends Controller
         $konselings = $query->paginate(10);
         return view('siswa.konseling.index', [
             'title' => 'Daftar Janji Temu Konseling',
-            'gurus' => Guru::all(),
+            'gurus' => Guru::all('nama'),
             'konselings' => $konselings
         ]);
     }
@@ -30,7 +30,7 @@ class KonselingController extends Controller
         $request->validate([
             'guru_id' => 'required',
             'janji_temu' => 'required',
-            'topik_masalah' => 'required',
+            'topik_masalah' => 'required'
         ]);
 
         Konseling::create([
@@ -43,11 +43,24 @@ class KonselingController extends Controller
         return redirect()->back();
     }
 
-    public function update() {
+    public function update(Konseling $konseling ,Request $request) {
+        $request->validate([
+            'guru_id' => 'required',
+            'janji_temu' => 'required',
+            'topik_masalah' => 'required'
+        ]);
 
+        $konseling->update([
+            'guru_id' => $request->guru_id,
+            'janji_temu' => $request->janji_temu,
+            'topik_masalah' => $request->topik_masalah
+        ]);
+
+        return redirect()->back();
     }
 
-    public function destroy() {
-
+    public function destroy(Konseling $konseling) {
+        $konseling->delete();
+        return redirect()->route('siswa.konseling.index');
     }
 }

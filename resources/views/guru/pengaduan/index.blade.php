@@ -58,7 +58,7 @@
                         <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->siswa->nama }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex justify-end">
-                              <a href="{{ route('guru.pengaduan.show', $pengaduan->id) }}">Lihat Pengaduan</a>
+                                <a href="{{ route('guru.pengaduan.show', $pengaduan->id) }}">Lihat Pengaduan</a>
                             </div>
                         </td>
                     </tr>

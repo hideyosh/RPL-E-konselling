@@ -5,22 +5,16 @@ namespace App\Http\Controllers\Guru;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pengaduan;
+use Illuminate\Support\Facades\Auth;
 
 class PengaduanController extends Controller
 {
     public function index(Request $request) {
-        $query =  Pengaduan::with('siswa')->latest();
+        $query =  Pengaduan::with('siswa')->where('guru_id', Auth::user()->guru->id)->latest();
 
         if ($request->has('status')) {
             $status = $request->input('status');
-
-            $query->when(in_array('belum dibaca', $status), function ($q) {
-                $q->orWhere('status', 'belum dibaca');
-            });
-
-            $query->when(in_array('dibaca', $status), function ($q) {
-                $q->orWhere('status', 'dibaca');
-            });
+            $query->whereIn('status', $status);
         }
 
         $pengaduans = $query->paginate(10);

@@ -12,6 +12,7 @@ use App\Http\Controllers\Siswa\KonselingController as SiswaKonselingController;
 //Controller Guru
 use App\Http\Controllers\Guru\PengaduanController as GuruPengaduanController;
 use App\Http\Controllers\Guru\DataDiriController as GuruDataDiriController;
+use App\Http\Controllers\Guru\KonselingController as GuruKonselingController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::controller(SiswaKonselingController::class)->group(function () {
                 Route::get('/konseling', 'index')->name('konseling.index');
                 Route::post('/konseling', 'store')->name('konseling.store');
+                Route::patch('/konseling/{konseling}', 'update')->name('konseling.update');
+                Route::delete('/konseling/{konseling}', 'destroy')->name('konseling.destroy');
             });
         });
         Route::controller(SiswaDataDiriController::class)->group(function () {
@@ -66,6 +69,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::controller(GuruPengaduanController::class)->group(function () {
                 Route::get('/pengaduan', 'index')->name('pengaduan.index');
                 Route::get('/pengaduan/{pengaduan}', 'show')->name('pengaduan.show');
+            });
+            Route::controller(GuruKonselingController::class)->group(function () {
+                Route::get('/konseling', 'index')->name('konseling.index');
+                Route::patch('/konseling/{konseling}', 'update')->name('konseling.update');
             });
         });
         Route::controller(GuruDataDiriController::class)->group(function () {

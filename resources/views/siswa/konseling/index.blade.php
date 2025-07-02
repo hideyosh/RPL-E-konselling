@@ -12,8 +12,33 @@
                 {{ $title }}
               </h2>
             </div>
+            <div class="flex gap-3">
+               <form method="GET" action="{{ route('siswa.konseling.index') }}"
+                    <div class="hs-dropdown relative inline-flex">
+                        <button id="hs-dropdown-with-icons" type="button" class="hs-dropdown-toggle py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+                            Status
+                            <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                        </button>
 
-            <div x-data="{ open : false }">
+                        <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700" role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-icons">
+                            <div class="p-1 space-y-0.5">
+                                <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
+                                    <input type="checkbox" name="status[]" value="menunggu" {{ in_array('menunggu', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="checkbox_belum">
+                                    <label for="hs-default-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Menunggu</label>
+                                </div>
+                                <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
+                                    <input type="checkbox" name="status[]" value="dikonfirmasi" {{ in_array('dikonfirmasi', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="checkbox_belum">
+                                    <label for="hs-default-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Dikonfirmasi</label>
+                                </div>
+                                <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
+                                    <input type="checkbox" name="status[]" value="dijadwalkan ulang" {{ in_array('dijadwalkan ulang', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
+                                    <label for="hs-checked-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Dijadwalkan Ulang</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                  <div x-data="{ open : false }">
                 <!-- Tombol -->
                 <div class="inline-flex gap-x-2">
                   <button @click="open = true" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
@@ -37,8 +62,7 @@
 
                 <!-- Popup -->
                 <div x-show="open" x-transition
-                class="fixed inset-0 flex items-center justify-center z-50" style="background-color: #8080804d; display: none"
-                @click.away="open = false">
+                class="fixed inset-0 flex items-center justify-center z-50" style="background-color: #8080804d; display: none">
                     <div class="bg-white p-8 rounded shadow-lg w-96">
                         <div class="flex justify-between items-center">
                             <h2 class="text-xl font-bold">Tambah Janji Temu</h2>
@@ -51,7 +75,7 @@
                         </div>
                         <form action="{{ route('siswa.konseling.store') }}" method="POST">
                             @csrf
-                             <div class="mt-5 mb-5">
+                            <div class="mt-5 mb-5">
                                 <label for="guru" class="block text-base font-medium mb-2 dark:text-white">Guru</label>
                                 <select name="guru_id" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                 <option selected="">Pilih guru penerima</option>
@@ -61,21 +85,19 @@
                                 </select>
                             </div>
                             <div class="mt-5 mb-5">
-                                <label for="janji_temu" class="block text-sm font-medium mb-2 dark:text-white">Tanggal Konseling</label>
-                                 <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                         <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                                    </svg>
+                               <label for="janji_temu" class="block text-sm font-medium mb-2 dark:text-white">Tanggal Konseling</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                        <svg class="shrink-0 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                    </div>
+                                    <input type="text" name="janji_temu" class="datePicker py-2.5 sm:py-3 pe-10 px-4 block w-full border-gray-300 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Pilih Tanggal">
                                 </div>
-                               <input type="date" id="janji_temu" name="janji_temu" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                             </div>
                             <div>
-                                <label for="topik_masalah" class="block text-sm font-medium mb-2 dark:text-white">Topik Masalah</label>
-                                 <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                         <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                                    </svg>
-                                </div>
+                               <label for="topik_masalah" class="block text-sm font-medium mb-2 dark:text-white">Topik Masalah</label>
                                <div class="max-w-sm space-y-3">
                                     <textarea id="topik_masalah" name="topik_masalah" class="py-2 px-3 sm:py-3 sm:px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Isi Topik Masalah"></textarea>
                                </div>
@@ -91,7 +113,8 @@
 
                 <!-- End Popup -->
               </div>
-          </div>
+            </div>
+            </div>
           <!-- End Header -->
 
           <!-- Table -->
@@ -116,21 +139,20 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $konselings->firstItem() + $loop->index }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->guru->nama }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->janji_temu }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->topik_masalah }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->status }}</td>
+                        <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->topik_masalah }}</td>
+                        <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->status }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex justify-end">
                                <!-- Tombol -->
-                                <div x-data="{ open : false, editUser: {} }">
-                                    <button @click="open = true; editUser = {{ json_encode($konseling) }}" class="inline-block p-2" >
+                                <div x-data="{ open : false, editKonseling: {} }">
+                                    <button @click="open = true; editKonseling = {{ json_encode($konseling) }}" class="inline-block p-2" >
                                         <i class="bi bi-pencil-fill text-blue-600 text-lg"></i>
                                     </button>
 
                                     <!-- Popup -->
                                     <div x-show="open" x-transition
                                         class="fixed inset-0 flex items-center justify-center z-50"
-                                        style="background-color: rgba(128, 128, 128, 0.3); display: none"
-                                        @click.away="open = false">
+                                        style="background-color: rgba(128, 128, 128, 0.3); display: none">
                                         <div class="bg-white p-8 rounded shadow-lg w-96">
                                             <div class="flex justify-between items-center">
                                                 <h2 class="text-xl font-bold">Edit User</h2>
@@ -143,44 +165,34 @@
                                             </div>
 
                                             <!-- Form -->
-                                             <form :action="`/admin/siswa/${editUser.id}`" method="POST">
+                                             <form :action="`/siswa/konseling/${editKonseling.id}`" method="POST">
                                                 @csrf
                                                 @method('PUT')
-                                                <div class="mt-5 mb-5">
-                                                    <label for="email" class="block text-base font-medium mb-2 dark:text-white">Email address</label>
-                                                    <div class="relative">
-                                                        <input type="email" name="email" x-model="editUser.email" class="py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                                        <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
-                                                            <svg class="shrink-0 size-4 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
+                                                 <div class="mt-5 mb-5">
+                                                    <label for="guru" class="block text-base font-medium mb-2 dark:text-white">Guru</label>
+                                                    <select name="guru_id" x-model="editKonseling.guru_id" class="capitalize font-normal py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                        @foreach ($gurus as $guru)
+                                                            <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
-                                                <div class="mb-5">
-                                                    <label for="password" class="block text-base font-medium mb-2 dark:text-white">Password</label>
+                                                <div class="mt-5 mb-5">
+                                                <label for="janji_temu" class="block text-sm font-medium mb-2 dark:text-white">Tanggal Konseling</label>
                                                     <div class="relative">
-                                                        <input type="password" name="password" x-model="editUser.password" class="password py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                                        <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock shrink-0 size-4 text-gray-400" viewBox="0 0 16 16">
-                                                                <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
+                                                        <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                            <svg class="shrink-0 size-4 text-gray-500 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                                <circle cx="12" cy="7" r="4"></circle>
                                                             </svg>
                                                         </div>
-                                                        <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" id="eyeIcon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                                            </svg>
-                                                        </button>
+                                                        <input type="text" name="janji_temu" x-model="editKonseling.janji_temu" class="datePicker py-2.5 sm:py-3 pe-10 px-4 block w-full border-gray-300 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Pilih Tanggal">
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <label for="role" class="block text-base font-medium mb-2 dark:text-white">Role</label>
-                                                    <select name="role"  x-model="editUser.role" class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                                        <option value="siswa">Siswa</option>
-                                                        <option value="guru">Guru</option>
-                                                    </select>
+                                                    <label for="topik_masalah" class="block text-sm font-medium mb-2 dark:text-white">Topik Masalah</label>
+                                                    <div class="max-w-sm space-y-3">
+                                                            <textarea id="topik_masalah" name="topik_masalah" x-model="editKonseling.topik_masalah" class="py-2 px-3 sm:py-3 sm:px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Isi Topik Masalah"></textarea>
+                                                    </div>
                                                 </div>
                                                 <div class="flex justify-end">
                                                     <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
@@ -194,7 +206,7 @@
                                 <form action="{{ route('siswa.konseling.destroy', $konseling->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button href="{{ route('logout')}}"  onclick="return confirm('Apakah anda yakin akan menghapus guru ini?')" class="inline-block p-2">
+                                    <button href="{{ route('logout')}}"  onclick="return confirm('Apakah anda yakin akan menghapus janji konseling ini?')" class="inline-block p-2">
                                         <i class="bi bi-trash-fill text-red-600 text-lg"></i>
                                     </button>
                                 </form>

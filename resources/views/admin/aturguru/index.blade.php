@@ -4,11 +4,11 @@
 <div class="flex flex-col p-4">
     <div class="-m-1.5 overflow-x-auto">
       <div class="p-1.5 min-w-full inline-block align-middle">
-        <div class="bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden dark:bg-neutral-800 dark:border-neutral-700">
+        <div class="bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden">
           <!-- Header -->
-          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
+          <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200">
             <div>
-              <h2 class="text-xl font-semibold text-gray-800 dark:text-neutral-200">
+              <h2 class="text-xl font-semibold text-gray-800">
                 {{ $title }}
               </h2>
             </div>
@@ -52,11 +52,11 @@
                         <form action="{{ route('admin.guru.store') }}" method="POST">
                             @csrf
                              <div class="mt-5 mb-5">
-                                <label for="email" class="block text-base font-medium mb-2 dark:text-white">Email address</label>
+                                <label for="email" class="block text-base font-medium mb-2">Email address</label>
                                 <div class="relative">
-                                    <input type="email" name="email" class="py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="example@gmail.com">
+                                    <input type="email" name="email" class="py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="example@gmail.com">
                                     <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
-                                        <svg class="shrink-0 size-4 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg class="shrink-0 size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                                         </svg>
@@ -64,15 +64,15 @@
                                 </div>
                             </div>
                             <div class="mb-5">
-                                <label for="password" class="block text-base font-medium mb-2 dark:text-white">Password</label>
+                                <label for="password" class="block text-base font-medium mb-2">Password</label>
                                 <div class="relative">
-                                    <input type="password"  name="password" class="password py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                    <input type="password"  name="password" class="password py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
                                     <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock shrink-0 size-4 text-gray-400" viewBox="0 0 16 16">
                                             <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
                                         </svg>
                                     </div>
-                                    <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                    <button type="button" onclick="togglePassword1()" class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
                                         <svg xmlns="http://www.w3.org/2000/svg" id="eyeIcon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -81,9 +81,9 @@
                                 </div>
                             </div>
                             <div>
-                                <label for="role" class="block text-base font-medium mb-2 dark:text-white">Role</label>
+                                <label for="role" class="block text-base font-medium mb-2">Role</label>
                                 <input type="hidden" name="role" value="guru">
-                                <select name="role" disabled class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                <select name="role" disabled class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
                                     <option value="guru" selected>Guru</option>
                                 </select>
                             </div>
@@ -105,7 +105,7 @@
           <div class="flex flex-col bg-white">
             <div class="-m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
-                <div class="p-3 overflow-hidden dark:border-neutral-700">
+                <div class="p-3 overflow-hidden">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
                     <thead>
                     <tr>
@@ -150,9 +150,9 @@
                                                 @csrf
                                                 @method('PATCH')
                                                 <div class="mt-5 mb-5">
-                                                    <label for="email" class="block text-base font-medium mb-2 dark:text-white">Email address</label>
+                                                    <label for="email" class="block text-base font-medium mb-2">Email address</label>
                                                     <div class="relative">
-                                                        <input type="email" name="email" x-model="editGuru.email" class="py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                        <input type="email" name="email" x-model="editGuru.email" class="py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
                                                         <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
                                                             <svg class="shrink-0 size-4 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
@@ -162,15 +162,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-5">
-                                                    <label for="password" class="block text-base font-medium mb-2 dark:text-white">Password</label>
+                                                    <label for="password" class="block text-base font-medium mb-2">Password</label>
                                                     <div class="relative">
-                                                        <input type="password" name="password" x-model="editGuru.password" class="password py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                        <input type="password" name="password" x-model="editGuru.password" class="password py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
                                                         <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock shrink-0 size-4 text-gray-400" viewBox="0 0 16 16">
                                                                 <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
                                                             </svg>
                                                         </div>
-                                                        <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                                        <button type="button" onclick="togglePassword2()" class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
                                                             <svg xmlns="http://www.w3.org/2000/svg" id="eyeIcon" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -179,8 +179,8 @@
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <label for="role" class="block text-base font-medium mb-2 dark:text-white">Role</label>
-                                                    <select name="role"  x-model="editGuru.role" class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                    <label for="role" class="block text-base font-medium mb-2">Role</label>
+                                                    <select name="role"  x-model="editGuru.role" class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
                                                         <option value="guru">Guru</option>
                                                         <option value="siswa">Siswa</option>
                                                     </select>
@@ -209,14 +209,14 @@
                 </table>
                 <div class="py-1 px-4">
                     <nav class="flex items-center justify-center space-x-1" aria-label="Pagination">
-                    <button type="button" class="p-2.5 min-w-10 inline-flex justify-center items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" aria-label="Previous">
+                    <button type="button" class="p-2.5 min-w-10 inline-flex justify-center items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" aria-label="Previous">
                         <span aria-hidden="true">«</span>
                         <span class="sr-only">Previous</span>
                     </button>
-                    <button type="button" class="min-w-10 flex justify-center items-center text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:focus:bg-neutral-700 dark:hover:bg-neutral-700" aria-current="page">1</button>
-                    <button type="button" class="min-w-10 flex justify-center items-center text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:focus:bg-neutral-700 dark:hover:bg-neutral-700">2</button>
-                    <button type="button" class="min-w-10 flex justify-center items-center text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:focus:bg-neutral-700 dark:hover:bg-neutral-700">3</button>
-                    <button type="button" class="p-2.5 min-w-10 inline-flex justify-center items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" aria-label="Next">
+                    <button type="button" class="min-w-10 flex justify-center items-center text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:focus:bg-neutral-700 dark:hover:bg-neutral-700" aria-current="page">1</button>
+                    <button type="button" class="min-w-10 flex justify-center items-center text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:focus:bg-neutral-700 dark:hover:bg-neutral-700">2</button>
+                    <button type="button" class="min-w-10 flex justify-center items-center text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:focus:bg-neutral-700 dark:hover:bg-neutral-700">3</button>
+                    <button type="button" class="p-2.5 min-w-10 inline-flex justify-center items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" aria-label="Next">
                         <span class="sr-only">Next</span>
                         <span aria-hidden="true">»</span>
                     </button>

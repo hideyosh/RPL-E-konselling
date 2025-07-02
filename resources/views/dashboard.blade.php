@@ -53,8 +53,7 @@
                   <tr>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">No</th>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Email</th>
-                    <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Role</th>
-                    <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Action</th>
+                    <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Role</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
@@ -62,15 +61,7 @@
                   <tr>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $users->firstItem() + $loop->index }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $user->email }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $user->role }}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                        <a href="#" class="inline-block p-2">
-                            <i class="bi bi-pencil-fill text-blue-600 text-lg"></i>
-                        </a>
-                        <a href="#" class="inline-block p-2">
-                            <i class="bi bi-trash-fill text-red-600 text-lg"></i>
-                        </a>
-                    </td>
+                    <td class="text-end px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $user->role }}</td>
                   </tr>
                   @endforeach
                 </tbody>
