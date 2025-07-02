@@ -26,10 +26,11 @@
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
   <!-- Title -->
-  <title>Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS</title>
+  <title>{{ $title ?? 'Sistem Konseling SMKN 46' }}</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="../../favicon.ico">
+  <link rel="icon" href="{{ asset('img/SMKNLOGO.png') }}" type="image/x-icon"/>
+
 
   <!-- Bootstrap Icon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.12.1/font/bootstrap-icons.min.css">
@@ -65,7 +66,7 @@
 </head>
 
 <body class="bg-gray-50 dark:bg-neutral-900">
-  @include('sweetalert2::index')
+  @include('sweetalert::alert')
   @include('partials.navbar')
 
   <!-- ========== MAIN CONTENT ========== -->
@@ -133,6 +134,8 @@
   <script src="https://cdn.jsdelivr.net/npm/apexcharts/dist/apexcharts.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/preline/dist/helper-apexcharts.js"></script>
 
+  <!-- SweetAlert -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script>
     function togglePassword() {

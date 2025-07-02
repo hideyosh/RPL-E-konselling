@@ -9,13 +9,14 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
     public function indexGuru() {
         return view('admin.aturguru.index',[
             'gurus' => User::where('role', 'guru')->paginate(10),
-            'title' => 'Table Guru'
+            'title' => 'Manajemen Akun Guru'
         ]);
     }
 
@@ -37,6 +38,7 @@ class UserController extends Controller
             ]);
         }
 
+        Alert::success('Berhasil', 'Akun Guru Telah Dibuat!');
         return redirect()->route('admin.guru.index');
 
     }
@@ -63,6 +65,7 @@ class UserController extends Controller
         }
         $guru->update($update);
 
+        Alert::success('Berhasil', 'Data Telah Diubah!');
         return redirect()->route('admin.guru.index');
     }
 
@@ -77,6 +80,7 @@ class UserController extends Controller
     public function destroyGuru(User $guru) {
         $guru->delete();
 
+        Alert::success('Berhasil', 'Akun Guru Telah Dihapus!');
         return redirect()->route('admin.guru.index');
 
     }
@@ -84,7 +88,7 @@ class UserController extends Controller
     public function indexSiswa() {
         return view('admin.atursiswa.index',[
             'siswas' => User::where('role', 'siswa')->paginate(10),
-            'title' => 'Table Siswa'
+            'title' => 'Manajemen Akun Siswa'
         ]);
     }
 
@@ -106,6 +110,7 @@ class UserController extends Controller
             ]);
         }
 
+        Alert::success('Berhasil', 'Akun Siswa Telah Dibuat!');
         return redirect()->route('admin.siswa.index');
 
     }
@@ -133,6 +138,7 @@ class UserController extends Controller
         }
         $siswa->update($update);
 
+        Alert::success('Berhasil', 'Data Telah Diubah!');
         return redirect()->route('admin.siswa.index');
     }
 
@@ -147,6 +153,7 @@ class UserController extends Controller
     public function destroySiswa(User $siswa) {
         $siswa->delete();
 
+        Alert::success('Berhasil', 'Akun Siswa Telah Dihapus!');
         return redirect()->route('admin.siswa.index');
 
     }

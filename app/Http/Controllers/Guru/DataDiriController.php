@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Guru;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DataDiriController extends Controller
 {
@@ -27,6 +28,7 @@ class DataDiriController extends Controller
         $guru->fill($request->only(['nama', 'nip', 'telpon', 'jenis_kelamin']));
         $guru->save();
 
+        Alert::success('Berhasil', 'Menambahkan Data Diri Anda!');
         return redirect()->route('guru.dashboard');
     }
 }
