@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('gurus', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('users_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string('nama', 20);
-            $table->string('nip', 20);
-            $table->string('telpon', 13);
-            $table->enum('jenis_kelamin', ['laki-laki','perempuan']);
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('nama', 50)->nullable();
+            $table->string('nip', 20)->nullable();
+            $table->string('telpon', 13)->nullable();
+            $table->enum('jenis_kelamin', ['laki-laki','perempuan'])->nullable();
             $table->timestamps();
         });
     }

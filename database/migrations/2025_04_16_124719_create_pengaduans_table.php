@@ -16,9 +16,8 @@ return new class extends Migration
             $table->foreignId('siswa_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('guru_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->text('isi_pengaduan');
-            $table->enum('status', ['belum_dibaca', 'dibaca']);
+            $table->enum('status', ['belum dibaca', 'dibaca'])->default('belum dibaca');
             $table->timestamps();
-
         });
     }
 
