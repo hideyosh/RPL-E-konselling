@@ -73,7 +73,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::controller(GuruKonselingController::class)->group(function () {
                 Route::get('/konseling', 'index')->name('konseling.index');
                 Route::patch('/konseling/{konseling}', 'update')->name('konseling.update');
-                Route::get('/laporan', 'indexLaporan')->name('laporan.index');
+                Route::get('/laporan', 'laporanIndex')->name('laporan.index');
+                Route::get('/laporan/buat-laporan', 'laporanCreate')->name('laporan.create');
             });
         });
         Route::controller(GuruDataDiriController::class)->group(function () {

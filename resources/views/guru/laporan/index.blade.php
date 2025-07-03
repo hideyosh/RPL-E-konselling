@@ -12,31 +12,15 @@
                 {{ $title }}
               </h2>
             </div>
-            <form method="GET" action="{{ route('guru.konseling.index') }}">
-                <div class="hs-dropdown relative inline-flex">
-                    <button id="hs-dropdown-with-icons" type="button" class="hs-dropdown-toggle py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                        Status
-                        <svg class="hs-dropdown-open:rotate-180 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-                    </button>
-
-                    <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700" role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-icons">
-                        <div class="p-1 space-y-0.5">
-                            <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                <input type="checkbox" name="status[]" value="menunggu" {{ in_array('menunggu', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="checkbox_belum">
-                                <label for="hs-default-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Menunggu</label>
-                            </div>
-                            <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                <input type="checkbox" name="status[]" value="dikonfirmasi" {{ in_array('dikonfirmasi', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="checkbox_belum">
-                                <label for="hs-default-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Dikonfirmasi</label>
-                            </div>
-                            <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                <input type="checkbox" name="status[]" value="dijadwalkan ulang" {{ in_array('dijadwalkan ulang', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
-                                <label for="hs-checked-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Dijadwalkan Ulang</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
+             <div class="inline-flex gap-x-2">
+                <a href="{{ route('guru.laporan.create') }}" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                    <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" />
+                    </svg>
+                    Buat Laporan Konseling
+                </a>
+              </div>
           </div>
           <!-- End Header -->
 

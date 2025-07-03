@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guru;
 
 use App\Http\Controllers\Controller;
 use App\Models\Guru;
+use App\Models\Siswa;
 use App\Models\Konseling;
 use App\Models\hasilKonseling;
 use Illuminate\Http\Request;
@@ -38,11 +39,20 @@ class KonselingController extends Controller
         ]);
 
         return redirect()->back();
-   }
+    }
 
-   public function laporanIndex() {
-        return view('guru.konseling.laporan', [
-
+    public function laporanIndex() {
+        return view('guru.laporan.index', [
+            'title' => 'Daftar Laporan Hasil Konseling',
+            'konselings' => Konseling::with('siswa')->latest()->paginate(10)
         ]);
-   }
+    }
+
+    public function laporanCreate() {
+        return view('guru.laporan.create', [
+            'title' => 'Tambah Laporan Konseling',
+            'konselings' => Konseling::all(),
+            'siswas' => Siswa::all()
+        ]);
+    }
 }
