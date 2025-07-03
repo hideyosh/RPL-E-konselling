@@ -73,6 +73,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::controller(GuruKonselingController::class)->group(function () {
                 Route::get('/konseling', 'index')->name('konseling.index');
                 Route::patch('/konseling/{konseling}', 'update')->name('konseling.update');
+                Route::get('/laporan', 'indexLaporan')->name('laporan.index');
             });
         });
         Route::controller(GuruDataDiriController::class)->group(function () {

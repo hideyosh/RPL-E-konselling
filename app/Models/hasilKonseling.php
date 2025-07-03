@@ -11,4 +11,8 @@ class hasilKonseling extends Model
         'ringkasan',
         'catatan_guru',
     ];
+
+    public function konseling() {
+        return $this->belongsTo(Konseling::class);
+    }
 }

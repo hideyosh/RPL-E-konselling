@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guru;
 use App\Http\Controllers\Controller;
 use App\Models\Guru;
 use App\Models\Konseling;
+use App\Models\hasilKonseling;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,5 +38,11 @@ class KonselingController extends Controller
         ]);
 
         return redirect()->back();
+   }
+
+   public function laporanIndex() {
+        return view('guru.konseling.laporan', [
+
+        ]);
    }
 }

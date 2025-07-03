@@ -23,4 +23,8 @@ class Konseling extends Model
         return $this->belongsTo(Guru::class);
     }
 
+    public function hasilKonseling() {
+        return $this->hasOne(hasilKonseling::class);
+    }
+
 }

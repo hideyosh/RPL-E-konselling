@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Konseling;
 use App\Models\Guru;
+use App\Models\hasilKonseling;
 
 class KonselingController extends Controller
 {
@@ -62,5 +63,12 @@ class KonselingController extends Controller
     public function destroy(Konseling $konseling) {
         $konseling->delete();
         return redirect()->route('siswa.konseling.index');
+    }
+
+    public function laporanIndex() {
+        return view('siswa.konseling.laporan', [    
+            // $laporans => hasilKonseling::with('konseling')->get()
+            'konselings' => Konseling::with('guru')->get()
+        ]);
     }
 }
