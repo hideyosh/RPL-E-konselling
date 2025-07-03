@@ -146,7 +146,7 @@
                                             </div>
 
                                             <!-- Form -->
-                                             <form :action="`/admin/guru/${editGuru.id}`" method="POST">
+                                             <form :action="/admin/guru/${editGuru.id}" method="POST">
                                                 @csrf
                                                 @method('PATCH')
                                                 <div class="mt-5 mb-5">
