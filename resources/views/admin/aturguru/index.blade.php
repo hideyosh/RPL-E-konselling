@@ -194,10 +194,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <form action="{{ route('admin.guru.destroy', $guru->id) }}" method="POST">
+                                <form action="{{ route('admin.guru.destroy', $guru->id) }}" method="POST" class="inline delete-form">
                                     @csrf
                                     @method('delete')
-                                    <button href="{{ route('logout')}}"  onclick="return confirm('Apakah anda yakin akan menghapus guru ini?')" class="inline-block p-2">
+                                    <button type="button" class="btn-delete inline-block p-2">
                                         <i class="bi bi-trash-fill text-red-600 text-lg"></i>
                                     </button>
                                 </form>
@@ -232,4 +232,30 @@
     </div>
   </div>
   <!-- End Card -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.btn-delete').forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Yakin ingin menghapus guru ini?',
+                text: "Tindakan ini tidak dapat dibatalkan.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    button.closest('form').submit();
+                }
+            });
+        });
+    });
+});
+
+</script>
+
 @endsection

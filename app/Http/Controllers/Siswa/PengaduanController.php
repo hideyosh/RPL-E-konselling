@@ -7,6 +7,7 @@ use App\Models\Guru;
 use App\Models\Pengaduan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PengaduanController extends Controller
 {
@@ -39,7 +40,8 @@ class PengaduanController extends Controller
             'isi_pengaduan' => $request->isi_pengaduan
         ]);
 
-        return redirect()->back()->with('success', 'Pengaduan berhasil dikirim.');
+        Alert::success('Berhasil', 'Pengaduan Telah Diajukan!');
+        return redirect()->back();
     }
 
     public function update(Request $request, Pengaduan $pengaduan) {
@@ -53,11 +55,13 @@ class PengaduanController extends Controller
             'isi_pengaduan' => $request->isi_pengaduan
         ]);
 
-        return redirect()->back()->with('success', 'Pengaduan berhasil diupdate.');
+        Alert::success('Berhasil', 'Pengaduan berhasil diupdate!');
+        return redirect()->back();
     }
 
     public function destroy(Pengaduan $pengaduan) {
         $pengaduan->delete();
+        Alert::success('Berhasil', 'Pengaduan Telah Dihapus!');
         return redirect()->route('siswa.pengaduan.index');
     }
 }

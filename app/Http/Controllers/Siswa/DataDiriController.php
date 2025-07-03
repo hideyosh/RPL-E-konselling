@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DataDiriController extends Controller
 {
@@ -28,6 +29,7 @@ class DataDiriController extends Controller
         $siswa->fill($request->only(['nama', 'nisn', 'kelas', 'jurusan', 'jenis_kelamin']));
         $siswa->save();
 
+        Alert::success('Berhasil', 'Menambahkan Data Diri Anda!');
         return redirect()->route('siswa.dashboard');
     }
 }

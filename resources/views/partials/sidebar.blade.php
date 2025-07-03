@@ -10,12 +10,16 @@ lg:block lg:translate-x-0 lg:end-auto lg:bottom-0
 dark:bg-neutral-800 dark:border-neutral-700" role="dialog" tabindex="-1" aria-label="Sidebar">
 <div class="relative flex flex-col h-full max-h-full">
   <div class="px-6 pt-4 flex items-center justify-center pb-4">
-    <!-- Logo -->
-        <a href="#" aria-label="Preline">
-            <img class="size-28" src="{{ asset('img/logo.jpg') }}" alt="">
-        </a>
-    <!-- End Logo -->
+    <!-- Logo + Title Horizontal -->
+    <a href="#" aria-label="Preline" class="flex items-center gap-3">
+        <img class="w-12 h-12  object-cover" src="{{ asset('img/logo.jpg') }}" alt="Logo SMKN 46">
+        <h1 class="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">
+            SMKN 46 - Jakarta Timur
+        </h1>
+    </a>
+    <!-- End Logo + Title -->
   </div>
+
 
   <!-- Content -->
   @if(Auth::user()->role == 'admin')

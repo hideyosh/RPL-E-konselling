@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Konseling;
 use App\Models\Guru;
-use App\Models\hasilKonseling;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class KonselingController extends Controller
 {
     public function index(Request $request) {
@@ -41,6 +40,7 @@ class KonselingController extends Controller
             'topik_masalah' => $request->topik_masalah
         ]);
 
+        Alert::success('Berhasil', 'Janji Temu Telah Diajukan!');
         return redirect()->back();
     }
 
@@ -66,7 +66,7 @@ class KonselingController extends Controller
     }
 
     public function laporanIndex() {
-        return view('siswa.konseling.laporan', [    
+        return view('siswa.konseling.laporan', [
             // $laporans => hasilKonseling::with('konseling')->get()
             'konselings' => Konseling::with('guru')->get()
         ]);
