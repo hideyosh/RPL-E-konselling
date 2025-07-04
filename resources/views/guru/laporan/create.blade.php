@@ -29,7 +29,7 @@
             @method('PATCH')
             <div class="border-2">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Siswa</label>
-                <select class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                <select class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ">
                     <option selected="">Pilih Penerima</option>
                     @foreach ($siswas as $siswa)
                         <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
@@ -38,19 +38,19 @@
             </div>
             <div class="border-2 row-span-3">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
-                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Isi nama lengkap anda">
+                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 " placeholder="Isi nama lengkap anda">
             </div>
             <div class="border-2">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
-                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Isi nama lengkap anda">
+                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 " placeholder="Isi nama lengkap anda">
             </div>
             <div class="border-2">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
-                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Isi nama lengkap anda">
+                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 " placeholder="Isi nama lengkap anda">
             </div>
             <div class="border-2 col-span-2">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
-                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Isi nama lengkap anda">
+                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 " placeholder="Isi nama lengkap anda">
             </div>
 
             <div class="md:col-span-2 flex justify-end">
