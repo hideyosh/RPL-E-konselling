@@ -75,7 +75,7 @@ dark:bg-neutral-800 dark:border-neutral-700" role="dialog" tabindex="-1" aria-la
             </li>
             <li>
                 <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 " href="{{ route('siswa.pengaduan.index') }}">
-                    <i class="fa-solid fa-paper-plane"></i>
+                    <i class="fa-solid fa-comments"></i>
                     Pengaduan
                 </a>
             </li>
@@ -122,7 +122,7 @@ dark:bg-neutral-800 dark:border-neutral-700" role="dialog" tabindex="-1" aria-la
         </li>
         <li>
         <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 " href="{{ route('guru.pengaduan.index') }}">
-            <i class="fa-solid fa-paper-plane"></i>
+            <i class="fa-solid fa-comments"></i>
             Pengaduan
         </a>
         </li>
