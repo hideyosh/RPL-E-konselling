@@ -6,39 +6,28 @@
     <!-- Grid -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
       <!-- Card -->
-      <div class="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
-        <div class="p-4 md:p-5">
-          <div class="flex items-center gap-x-2">
-            <p class="text-xs uppercase text-gray-500 dark:text-neutral-500">
-              Guru
-            </p>
+        <div class="flex items-center gap-5 bg-indigo-400 border border-gray-200 shadow-sm rounded-xl p-4 w-full">
+          <div class="flex-shrink-0 ml-4">
+            <i class="fa-solid fa-user text-2xl text-white text-shadow-lg"></i>
           </div>
 
-          <div class="mt-1 flex items-center gap-x-2">
-            <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-              {{ $gurus }}
-            </h3>
+          <div>
+            <p class="text-sm font-semibold text-white text-shadow-lg">Guru</p>
+            <h3 class="text-xl font-bold text-white text-shadow-lg">{{$gurus}}</h3>
           </div>
         </div>
-      </div>
       <!-- End Card -->
 
-      <!-- Card -->
-      <div class="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
-        <div class="p-4 md:p-5">
-          <div class="flex items-center gap-x-2">
-            <p class="text-xs uppercase text-gray-500 dark:text-neutral-500">
-              Siswa
-            </p>
+        <div class="flex items-center gap-5 bg-yellow-400 border border-gray-200 shadow-sm rounded-xl p-4 w-full">
+          <div class="flex-shrink-0 ml-4">
+            <i class="fa-solid fa-user text-2xl text-white text-shadow-lg"></i>
           </div>
 
-          <div class="mt-1 flex items-center gap-x-2">
-            <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-              {{ $siswas }}
-            </h3>
+          <div>
+            <p class="text-sm font-semibold text-white text-shadow-lg">Siswa</p>
+            <h3 class="text-xl font-bold text-white text-shadow-lg">{{$siswas}}</h3>
           </div>
         </div>
-      </div>
       <!-- End Card -->
     </div>
     <!-- End Grid -->

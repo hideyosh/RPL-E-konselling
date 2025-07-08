@@ -22,6 +22,7 @@
   <meta property="og:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
   <meta property="og:description" content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
   <meta property="og:image" content="https://preline.co/assets/img/og-image.png">
+  
 
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
@@ -89,12 +90,6 @@
 
       <!-- Breadcrumb -->
       <ol class="ms-3 flex items-center whitespace-nowrap">
-        <li class="flex items-center text-sm text-gray-800 dark:text-neutral-400">
-          Application Layout
-          <svg class="shrink-0 mx-3 overflow-visible size-2.5 text-gray-400 dark:text-neutral-500" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-          </svg>
-        </li>
         <li class="text-sm font-semibold text-gray-800 truncate dark:text-neutral-400" aria-current="page">
           Dashboard
         </li>
@@ -146,6 +141,8 @@
       time_24hr: true,
     });
   </script>
+
+  <script src="https://kit.fontawesome.com/900599c996.js" crossorigin="anonymous"></script>
 
   <!-- SweetAlert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

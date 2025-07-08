@@ -28,24 +28,28 @@
             @csrf
             <div class="">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Siswa</label>
-                <input id="topik_masalah" readonly type="text" readonly class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="{{ $konselings->siswa->nama }}">
+                <select class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ">
+                    <option selected="">Pilih Penerima</option>
+                    @foreach ($siswas as $siswa)
+                        <option value="{{ $siswa->id }}">{{ $siswa->nama }}</option>
+                    @endforeach
+                </select>
             </div>
-            <div class="row-span-3">
-                <label class="block text-sm font-medium mb-2 dark:text-white">Ringkasan Konseling</label>
-                <textarea name="ringkasan" rows="11" class="py-2 px-4 w-full border border-gray-300 rounded-lg text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Isi ringkasan hasil konseling...."></textarea>
+            <div class="border-2 row-span-3">
+                <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
+                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 " placeholder="Isi nama lengkap anda">
             </div>
-            <div class="">
-                <label class="block text-sm font-medium mb-2 dark:text-white">Tanggal Konseling</label>
-                <input id="topik_masalah" type="text" readonly class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="{{ $konselings->janji_temu }}">
+            <div class="border-2">
+                <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
+                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 " placeholder="Isi nama lengkap anda">
             </div>
-            <input type="hidden" name="konseling_id" value="{{ $konselings->id }}">
-            <div class="">
-                <label class="block text-sm font-medium mb-2 dark:text-white">Topik Masalah</label>
-                <input id="topik_masalah" type="text" readonly class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="{{ $konselings->topik_masalah }}">
+            <div class="border-2">
+                <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
+                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 " placeholder="Isi nama lengkap anda">
             </div>
-            <div class=" col-span-2">
-                <label class="block text-sm font-medium mb-2 dark:text-white">Catatan Guru</label>
-                <textarea name="catatan_guru" rows="3" class="py-2 px-4 w-full border border-gray-300 rounded-lg text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Isi catatan guru terhadap siswa setelah konseling...."></textarea>
+            <div class="border-2 col-span-2">
+                <label class="block text-sm font-medium mb-2 dark:text-white">Nama Lengkap</label>
+                <input type="text" name="nama" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 " placeholder="Isi nama lengkap anda">
             </div>
 
             <div class="md:col-span-2 flex justify-end">

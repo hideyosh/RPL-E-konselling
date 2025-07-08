@@ -8,9 +8,9 @@
     @vite('resources/js/app.js')
 </head>
     <body class="bg-white min-h-screen flex items-center justify-center">
-    <div class="w-full max-w-sm">
+    <div class="w-full max-w-md ">
     <h2 class="text-base font-semibold mb-2">Login</h2>
-    <div class="p-6 border border-gray-300 rounded-xl shadow-sm">
+    <div class="p-8 border border-gray-300 rounded-xl shadow-sm">
 
         <div id="session-status" class="mb-4 text-sm text-green-600 hidden">
         </div>
@@ -18,13 +18,13 @@
         <form method="POST" action="/login">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-            <div class="mb-5">
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+            <div class="mb-6">
+                <label for="email" class=" mt-4 block text-sm font-medium text-gray-700">Email</label>
                 <input id="email" name="email" type="email" placeholder="example@gmail.com" required
                     class="block mt-1.5 p-2 w-full rounded-xl border border-gray-200 text-sm text-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
                 <p class="mt-2 text-sm text-red-500 hidden" id="email-error">Email is required.</p>
             </div>
-            <div class="mb-5 relative">
+            <div class="mb-6 relative">
                 <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
                 <input id="password" name="password" type="password" placeholder="••••••••" required
                     class="block mt-1.5 p-2 w-full pr-10 rounded-xl border border-gray-200 text-sm text-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
@@ -43,7 +43,7 @@
                 </span>
                 <p class="mt-2 text-sm text-red-500 hidden" id="password-error">Password is required.</p>
             </div>
-            <div>
+            <div class="mb-6">
                 <button type="submit"
                 class="block mx-auto w-[150px] bg-blue-500 text-white font-semibold py-2 rounded-xl hover:bg-blue-600 transition">
                 Submit
