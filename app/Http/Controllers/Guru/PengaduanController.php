@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Pengaduan;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PengaduanController extends Controller
 {
@@ -28,6 +29,7 @@ class PengaduanController extends Controller
     public function show(Pengaduan $pengaduan) {
         if ($pengaduan->status === 'belum dibaca') {
             $pengaduan->update(['status' => 'dibaca']);
+            Alert::success('Berhasil', 'Pengaduan telah terbaca');
         }
         return view('guru.pengaduan.show', [
             'pengaduan' => $pengaduan,

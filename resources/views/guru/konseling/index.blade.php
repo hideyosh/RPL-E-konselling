@@ -30,8 +30,12 @@
                                 <label for="hs-default-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Dikonfirmasi</label>
                             </div>
                             <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                <input type="checkbox" name="status[]" value="dijadwalkan ulang" {{ in_array('dijadwalkan ulang', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
+                                <input type="checkbox" name="status[]" value="dijadwalkan_ulang" {{ in_array('dijadwalkan_ulang', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
                                 <label for="hs-checked-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Dijadwalkan Ulang</label>
+                            </div>
+                            <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
+                                <input type="checkbox" name="status[]" value="selesai" {{ in_array('selesai', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
+                                <label for="hs-checked-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Selesai</label>
                             </div>
                         </div>
                     </div>
@@ -52,7 +56,6 @@
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Siswa</th>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Janji Temu</th>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Topik Masalah</th>
-                        <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Status</th>
                         <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Action</th>
                     </tr>
                     </thead>
@@ -63,13 +66,12 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->siswa->nama }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->janji_temu }}</td>
                         <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->topik_masalah }}</td>
-                        <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $konseling->status }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex justify-end">
-                                <div x-data="{ open : false, showKonseling: {} }"">
+                                <div x-data="{ open : false, showKonseling: {} }">
                                     <!--Tombol -->
-                                    <button @click="open = true; showKonseling = {{ json_encode($konseling->load('siswa')) }}" class="inline-block p-2" >
-                                        <i class="bi bi-eye-fill text-blue-600 text-lg"></i>
+                                    <button @click="open = true; showKonseling = {{ json_encode($konseling->load('siswa')) }}" class="inline-block py-1 px-2 bg-blue-600 border-2 border-blue-600 rounded hover:bg-blue-800 hover:border-blue-800 hover:py-1 hover:px-2">
+                                        <i class="bi bi-eye-fill text-white text-lg"></i>
                                     </button>
                                     <!-- Popup -->
                                     <div x-show="open" x-transition
@@ -108,15 +110,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </td>
-                        @if ($konseling->status == 'menunggu')
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <div class="flex justify-end">
-                               <!-- Tombol -->
+                                @if($konseling->status !== 'selesai')
+                                <!-- Tombol -->
                                 <div x-data="{ open : false, editKonseling: {} }">
-                                    <button @click="open = true; editKonseling = {{ json_encode($konseling) }}" class="inline-block p-2" >
-                                        <i class="bi bi-pencil-fill text-blue-600 text-lg"></i>
+                                    <button @click="open = true; editKonseling = {{ json_encode($konseling) }}" class="inline-block mx-2 py-1 px-2 bg-yellow-400 border-2 border-yellow-400 rounded hover:bg-yellow-600 hover:border-yellow-600 hover:py-1 hover:px-2">
+                                        <i class="bi bi-pencil-fill text-white text-lg"></i>
                                     </button>
                                     <!-- Popup -->
                                     <div x-show="open" x-transition
@@ -163,17 +161,32 @@
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <label for="status" class="block text-sm font-medium mb-2 dark:text-white">Konfirmasi Tanggal Konseling</label>
-                                                    <div class="flex gap-x-6">
-                                                        <div class="flex">
-                                                            <input type="radio" name="status" value="dikonfirmasi" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-radio-group-1">
-                                                            <label for="hs-radio-group-1" class="text-sm text-gray-500 ms-2 dark:text-neutral-400">Setuju</label>
+                                                    @if($konseling->status === 'menunggu')
+                                                        <label for="status" class="block text-sm font-medium mb-2 dark:text-white">Konfirmasi Tanggal Konseling</label>
+                                                        <div class="flex gap-x-6">
+                                                            <div class="flex">
+                                                                <input type="radio" name="status" value="dikonfirmasi" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-radio-group-1">
+                                                                <label for="hs-radio-group-1" class="text-sm text-gray-500 ms-2 dark:text-neutral-400">Setuju</label>
+                                                            </div>
+                                                            <div class="flex">
+                                                                <input type="radio" name="status" value="dijadwalkan ulang" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-radio-group-2">
+                                                                <label for="hs-radio-group-2" class="text-sm text-gray-500 ms-2 dark:text-neutral-400">Tidak</label>
+                                                            </div>
                                                         </div>
-                                                        <div class="flex">
-                                                            <input type="radio" name="status" value="dijadwalkan ulang" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-radio-group-2">
-                                                            <label for="hs-radio-group-2" class="text-sm text-gray-500 ms-2 dark:text-neutral-400">Tidak</label>
+                                                    @elseif($konseling->status !== 'selesai')
+                                                        <label for="status" class="block text-sm font-medium mb-2 dark:text-white">Apakah Sesi Konseling Sudah Dilakukan?</label>
+                                                        <div class="flex gap-x-6">
+                                                            <div class="flex">
+                                                                <input type="radio" name="status" value="selesai" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-radio-group-1">
+                                                                <label for="hs-radio-group-1" class="text-sm text-gray-500 ms-2 dark:text-neutral-400">Sudah</label>
+                                                            </div>
+                                                            <div class="flex">
+                                                                <input type="radio" name="status" value="dikonfirmasi" class="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-radio-group-2">
+                                                                <label for="hs-radio-group-2" class="text-sm text-gray-500 ms-2 dark:text-neutral-400">Belum</label>
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endif
+
                                                 </div>
                                                 <div class="flex justify-end">
                                                     <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
@@ -184,9 +197,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endif
                             </div>
                         </td>
-                        @endif
                     </tr>
                     @endforeach
                     </tbody>

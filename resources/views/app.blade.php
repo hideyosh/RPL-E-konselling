@@ -184,6 +184,19 @@
     }
   </script>
 
+    @if (session('warning'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Perhatian',
+                text: '{{ session('warning') }}',
+                confirmButtonColor: '#f59e0b'
+            });
+        });
+    </script>
+    @endif
+
 
   <script>
     window.addEventListener("load", () => {

@@ -23,7 +23,7 @@ class PengaduanController extends Controller
 
         return view('siswa.pengaduan.index', [
             'pengaduans' => $pengaduans,
-            'gurus' => Guru::all(),
+            'gurus' => Guru::all(['id', 'nama']),
             'title' => ' Pengaduan'
         ]);
     }

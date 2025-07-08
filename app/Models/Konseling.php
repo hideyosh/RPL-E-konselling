@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Konseling extends Model
 {
@@ -23,7 +24,7 @@ class Konseling extends Model
         return $this->belongsTo(Guru::class);
     }
 
-    public function hasilKonseling() {
+    public function hasilKonseling() : HasOne {
         return $this->hasOne(hasilKonseling::class);
     }
 

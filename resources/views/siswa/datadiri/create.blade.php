@@ -48,11 +48,6 @@
             </div>
 
             <div>
-              <label class="block text-sm font-medium mb-2 dark:text-white">Nomor Telepon</label>
-              <input type="text" name="telepon" disabled class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm focus:border-blue-500 focus:ring-blue-500 opacity-50 pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Isi nomor lengkap">
-            </div>
-
-            <div>
               <label class="block text-sm font-medium mb-2 dark:text-white">Jenis Kelamin</label>
               <select name="jenis_kelamin" class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm text-gray-500 focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
                 <option hidden>Pilih Jenis Kelamin</option>

@@ -11,7 +11,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class KonselingController extends Controller
 {
     public function index(Request $request) {
-        $query =  Konseling::with('guru')->where('siswa_id', Auth::user()->siswa->id)->latest();
+        $query = Konseling::with('guru')->where('siswa_id', Auth::user()->siswa->id)->latest();
 
         if ($request->has('status')) {
             $status = $request->input('status');
@@ -21,7 +21,7 @@ class KonselingController extends Controller
         $konselings = $query->paginate(10);
         return view('siswa.konseling.index', [
             'title' => 'Daftar Janji Temu Konseling',
-            'gurus' => Guru::all('nama'),
+            'gurus' => Guru::all(['id', 'nama']),
             'konselings' => $konselings
         ]);
     }

@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Siswa;
 use App\Models\Guru;
 use Closure;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,15 +22,15 @@ class DataDiriMiddleware
         if (Auth::check()) {
             if (Auth::user()->role === 'siswa') {
                 $siswa = Siswa::where('user_id', Auth::id())->first();
-                if ($siswa->nama == null) {
-                    return redirect()->route('siswa.datadiri.create')
-                    ->with('warning', 'Kamu harus melengkapi data diri terlebih dahulu.');
+                if (!$siswa || is_null($siswa->nama)) {
+                    Alert::warning('Peringatan', 'Kamu harus melengkapi data diri terlebih dahulu.');
+                    return redirect()->route('siswa.datadiri.create');
                 }
             } else if (Auth::user()->role === 'guru') {
                 $guru = Guru::where('user_id', Auth::id())->first();
-                if ($guru->nama == null) {
-                    return redirect()->route('guru.datadiri.create')
-                    ->with('warning', 'Kamu harus melengkapi data diri terlebih dahulu.');
+                if (!$guru || is_null($guru->nama)) {
+                    Alert::warning('Peringatan', 'Kamu harus melengkapi data diri terlebih dahulu.');
+                    return redirect()->route('guru.datadiri.create');
                 }
             }
         }

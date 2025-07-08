@@ -8,17 +8,19 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Siswa\PengaduanController as SiswaPengaduanController;
 use App\Http\Controllers\Siswa\DataDiriController as SiswaDataDiriController;
 use App\Http\Controllers\Siswa\KonselingController as SiswaKonselingController;
+use App\Http\Controllers\Siswa\LaporanController as SiswaLaporanController;
 
 //Controller Guru
 use App\Http\Controllers\Guru\PengaduanController as GuruPengaduanController;
 use App\Http\Controllers\Guru\DataDiriController as GuruDataDiriController;
 use App\Http\Controllers\Guru\KonselingController as GuruKonselingController;
+use App\Http\Controllers\Guru\LaporanController as GuruLaporanController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -56,6 +58,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::patch('/konseling/{konseling}', 'update')->name('konseling.update');
                 Route::delete('/konseling/{konseling}', 'destroy')->name('konseling.destroy');
             });
+            Route::controller(SiswaLaporanController::class)->group(function () {
+                Route::get('/laporan', 'index')->name('laporan.index');
+            });
         });
         Route::controller(SiswaDataDiriController::class)->group(function () {
             Route::get('/isi-data-diri', 'create')->name('datadiri.create');
@@ -73,8 +78,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::controller(GuruKonselingController::class)->group(function () {
                 Route::get('/konseling', 'index')->name('konseling.index');
                 Route::patch('/konseling/{konseling}', 'update')->name('konseling.update');
-                Route::get('/laporan', 'laporanIndex')->name('laporan.index');
-                Route::get('/laporan/buat-laporan', 'laporanCreate')->name('laporan.create');
+            });
+            Route::controller(GuruLaporanController::class)->group(function () {
+                Route::get('/laporan', 'index')->name('laporan.index');
+                Route::get('/laporan/create/{konseling}', 'create')->name('laporan.create');
+                Route::post('/laporan/create', 'store')->name('laporan.store');
+                Route::get('/laporan/edit/{laporan}', 'edit')->name('laporan.edit');
+                Route::patch('/laporan/edit/{laporan}', 'update')->name('laporan.update');
+                Route::delete('/laporan/{laporan}', 'delete')->name('laporan.delete');
             });
         });
         Route::controller(GuruDataDiriController::class)->group(function () {

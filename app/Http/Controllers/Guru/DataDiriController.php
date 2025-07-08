@@ -17,15 +17,15 @@ class DataDiriController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
+        $validated = $request->validate([
             'nama' => 'required',
             'nip' => 'required',
             'telpon' => 'required',
             'jenis_kelamin' => ['required', 'in:laki-laki,perempuan'],
         ]);
 
-        $guru = Guru::where('user_id', Auth::id())->first();
-        $guru->fill($request->only(['nama', 'nip', 'telpon', 'jenis_kelamin']));
+        $guru = Guru::firstOrNew(['user_id' => Auth::id()]);
+        $guru->fill($validated);
         $guru->save();
 
         Alert::success('Berhasil', 'Menambahkan Data Diri Anda!');

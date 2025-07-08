@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
 </head>
     <body class="bg-white min-h-screen flex items-center justify-center">
     <div class="w-full max-w-sm">
     <h2 class="text-base font-semibold mb-2">Login</h2>
     <div class="p-6 border border-gray-300 rounded-xl shadow-sm">
-        
+
         <div id="session-status" class="mb-4 text-sm text-green-600 hidden">
         </div>
 
@@ -28,7 +29,7 @@
                 <input id="password" name="password" type="password" placeholder="••••••••" required
                     class="block mt-1.5 p-2 w-full pr-10 rounded-xl border border-gray-200 text-sm text-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" />
 
-                <span id="toggle-password" class="absolute top-1/2 translate-y-[2px] -translate-y-1/2 right-3 flex items-center cursor-pointer">
+                <span id="toggle-password" class="absolute top-1/2 translate-y-[2px]  right-3 flex items-center cursor-pointer">
                         <svg id="eye-open" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

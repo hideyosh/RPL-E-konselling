@@ -17,7 +17,7 @@ class DataDiriController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
+        $validated = $request->validate([
             'nama' => ['required', 'string', 'max:50'],
             'nisn' => 'required',
             'kelas' => ['required', 'in:10,11,12'],
@@ -25,8 +25,8 @@ class DataDiriController extends Controller
             'jenis_kelamin' => ['required', 'in:laki-laki,perempuan']
         ]);
 
-        $siswa = Siswa::where('user_id', Auth::id())->first();
-        $siswa->fill($request->only(['nama', 'nisn', 'kelas', 'jurusan', 'jenis_kelamin']));
+        $siswa = Siswa::firstOrNew(['user_id' => Auth::id()]);
+        $siswa->fill($validated);
         $siswa->save();
 
         Alert::success('Berhasil', 'Menambahkan Data Diri Anda!');

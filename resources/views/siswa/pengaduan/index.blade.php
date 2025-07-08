@@ -23,7 +23,7 @@
                         <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700" role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-icons">
                             <div class="p-1 space-y-0.5">
                                 <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                    <input type="checkbox" name="status[]" value="belum dibaca" {{ in_array('belum dibaca', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="checkbox_belum">
+                                    <input type="checkbox" name="status[]" value="belum_dibaca" {{ in_array('belum_dibaca', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="checkbox_belum">
                                     <label for="hs-default-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Belum Dibaca</label>
                                 </div>
 
@@ -120,78 +120,80 @@
                     @foreach ($pengaduans as $pengaduan)
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $pengaduans->firstItem() + $loop->index }}</td>
-                        <td class="first-letter:uppercase px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->isi_pengaduan }}</td>
+                        <td class="first-letter:uppercase px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ Str::limit($pengaduan->isi_pengaduan, 20)}}</td>
                         <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->guru->nama }}</td>
-                        <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->status }}</td>
+                        <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ str_replace('_', ' ', $pengaduan->status) }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex justify-end">
-                               <!-- Tombol -->
-                                <div x-data="{ open : false, editPengaduan: {} }">
-                                    <button @click="open = true; editPengaduan = {{ json_encode($pengaduan) }}" class="inline-block p-2" >
-                                        <i class="bi bi-pencil-fill text-blue-600 text-lg"></i>
-                                    </button>
+                                @if($pengaduan->status === 'belum_dibaca')
+                                     <!-- Tombol -->
+                                    <div x-data="{ open : false, editPengaduan: {} }">
+                                        <button @click="open = true; editPengaduan = {{ json_encode($pengaduan) }}" class="inline-block mx-2 py-1 px-2 bg-yellow-400 border-2 border-yellow-400 rounded hover:bg-yellow-600 hover:border-yellow-600 hover:py-1 hover:px-2" >
+                                            <i class="bi bi-pencil-fill text-white text-lg"></i>
+                                        </button>
 
-                                    <!-- Popup -->
-                                    <div x-show="open" x-transition
-                                        class="fixed inset-0 flex items-center justify-center z-50"
-                                        style="background-color: rgba(128, 128, 128, 0.3); display: none"
-                                        @click.away="open = false">
-                                        <div class="bg-white p-8 rounded shadow-lg w-96">
-                                            <div class="flex justify-between items-center">
-                                                <h2 class="text-xl font-bold">Edit Pengaduan</h2>
-                                                <!-- Tombol X -->
-                                                <button @click="open = false" class="text-gray-500 hover:text-gray-700">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <!-- Popup -->
-                                            <div x-show="open" x-transition
-                                            class="fixed inset-0 flex items-center justify-center z-50" style="background-color: #8080804d; display: none"
+                                        <!-- Popup -->
+                                        <div x-show="open" x-transition
+                                            class="fixed inset-0 flex items-center justify-center z-50"
+                                            style="background-color: rgba(128, 128, 128, 0.3); display: none"
                                             @click.away="open = false">
-                                                <div class="bg-white p-8 rounded shadow-lg w-96">
-                                                    <div class="flex justify-between items-center">
-                                                        <h2 class="text-xl font-bold">Edit Pengaduan</h2>
-                                                        <!-- Tombol X -->
-                                                        <button @click="open = false" class="block top-3 right-3 text-gray-500 hover:text-gray-700">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <div class="bg-white p-8 rounded shadow-lg w-96">
+                                                <div class="flex justify-between items-center">
+                                                    <h2 class="text-xl font-bold">Edit Pengaduan</h2>
+                                                    <!-- Tombol X -->
+                                                    <button @click="open = false" class="text-gray-500 hover:text-gray-700">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                    <form :action="`/siswa/pengaduan/${editPengaduan.id}`"  method="POST">
-                                                        @csrf
-                                                        <div class="mt-5 mb-5">
-                                                            <label for="guru" class="block text-base font-medium mb-2 dark:text-white">Guru</label>
-                                                            <select name="guru_id" x-model="editPengaduan.guru_id" class="capitalize font-normal py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                                                                @foreach ($gurus as $guru)
-                                                                    <option class="capitalize" value="{{ $guru->id }}">{{ $guru->nama }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div>
-                                                            <label for="isi_pengaduan" class="block text-sm font-medium mb-2 dark:text-white">Isi Pengaduan</label>
-                                                            <textarea name="isi_pengaduan" x-model="editPengaduan.isi_pengaduan" id="textarea-label" class="font-normal py-2 px-3 sm:py-3 sm:px-4 block w-full   border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Tulis isi pengaduan disini..."></textarea>
-                                                        </div>
-                                                        <div class="flex justify-end">
-                                                            <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                                                                Submit
+                                                        </svg>
+                                                    </button>
+                                                </div>
+
+                                                <!-- Popup -->
+                                                <div x-show="open" x-transition
+                                                class="fixed inset-0 flex items-center justify-center z-50" style="background-color: #8080804d; display: none"
+                                                @click.away="open = false">
+                                                    <div class="bg-white p-8 rounded shadow-lg w-96">
+                                                        <div class="flex justify-between items-center">
+                                                            <h2 class="text-xl font-bold">Edit Pengaduan</h2>
+                                                            <!-- Tombol X -->
+                                                            <button @click="open = false" class="block top-3 right-3 text-gray-500 hover:text-gray-700">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                                                </svg>
                                                             </button>
                                                         </div>
-                                                    </form>
+                                                        <form :action="`/siswa/pengaduan/${editPengaduan.id}`"  method="POST">
+                                                            @csrf
+                                                            <div class="mt-5 mb-5">
+                                                                <label for="guru" class="block text-base font-medium mb-2 dark:text-white">Guru</label>
+                                                                <select name="guru_id" x-model="editPengaduan.guru_id" class="capitalize font-normal py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                                    @foreach ($gurus as $guru)
+                                                                        <option class="capitalize" value="{{ $guru->id }}">{{ $guru->nama }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div>
+                                                                <label for="isi_pengaduan" class="block text-sm font-medium mb-2 dark:text-white">Isi Pengaduan</label>
+                                                                <textarea name="isi_pengaduan" x-model="editPengaduan.isi_pengaduan" id="textarea-label" class="font-normal py-2 px-3 sm:py-3 sm:px-4 block w-full   border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Tulis isi pengaduan disini..."></textarea>
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                                                    Submit
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
+                                                <!-- End Popup -->
                                             </div>
-                                            <!-- End Popup -->
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                                 <form action="{{ route('siswa.pengaduan.destroy', $pengaduan->id) }}" method="POST" class="inline delete-form">
                                     @csrf
                                     @method('delete')
-                                    <button type="button" class="btn-delete inline-block p-2">
-                                        <i class="bi bi-trash-fill text-red-600 text-lg"></i>
+                                    <button type="button" class="btn-delete inline-block py-1 px-2 bg-red-600 border-2 border-red-600 rounded hover:bg-red-800 hover:border-red-800 hover:py-1 hover:px-2">
+                                        <i class="bi bi-trash-fill text-white text-lg"></i>
                                     </button>
                                 </form>
                             </div>

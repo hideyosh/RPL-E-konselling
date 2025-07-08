@@ -24,28 +24,29 @@
                 </ul>
             </div>
             @endif
-          <form action="{{ route('guru.laporan.store') }}" method="POST" class="grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 gap-7">
+          <form action="{{ route('guru.laporan.update', $laporan->id) }}" class="grid grid-cols-1 md:grid-cols-2 md:grid-rows-3 gap-7" method="POST">
             @csrf
+            @method('PATCH')
             <div class="">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Siswa</label>
-                <input id="topik_masalah" readonly type="text" readonly class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="{{ $konselings->siswa->nama }}">
+                <input id="topik_masalah" readonly type="text" readonly class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="{{ $laporan->konseling->siswa->nama }}">
             </div>
             <div class="row-span-3">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Ringkasan Konseling</label>
-                <textarea name="ringkasan" rows="11" class="py-2 px-4 w-full border border-gray-300 rounded-lg text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Isi ringkasan hasil konseling...."></textarea>
+                <textarea name="ringkasan" rows="11" class="py-2 px-4 w-full border border-gray-300 rounded-lg text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">{{ old('ringkasan', $laporan->ringkasan) }}</textarea>
             </div>
             <div class="">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Tanggal Konseling</label>
-                <input id="topik_masalah" type="text" readonly class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="{{ $konselings->janji_temu }}">
+                <input id="topik_masalah" type="text" readonly class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="{{ $laporan->konseling->janji_temu }}">
             </div>
-            <input type="hidden" name="konseling_id" value="{{ $konselings->id }}">
+            <input type="hidden" name="konseling_id" value="{{ $laporan->konseling->id }}">
             <div class="">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Topik Masalah</label>
-                <input id="topik_masalah" type="text" readonly class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="{{ $konselings->topik_masalah }}">
+                <input id="topik_masalah" type="text" readonly class="py-2.5 px-4 w-full rounded-lg border border-gray-200 text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="{{ $laporan->konseling->topik_masalah }}">
             </div>
             <div class=" col-span-2">
                 <label class="block text-sm font-medium mb-2 dark:text-white">Catatan Guru</label>
-                <textarea name="catatan_guru" rows="3" class="py-2 px-4 w-full border border-gray-300 rounded-lg text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400" placeholder="Isi catatan guru terhadap siswa setelah konseling...."></textarea>
+                <textarea name="catatan_guru" rows="3" class="py-2 px-4 w-full border border-gray-300 rounded-lg text-sm dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">{{ old('catatan_guru', $laporan->catatan_guru) }}</textarea>
             </div>
 
             <div class="md:col-span-2 flex justify-end">

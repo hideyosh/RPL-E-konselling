@@ -58,7 +58,9 @@
                         <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200 hover:underline">{{ $pengaduan->siswa->nama }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex justify-end">
-                                <a href="{{ route('guru.pengaduan.show', $pengaduan->id) }}">Lihat Pengaduan</a>
+                                <a href="{{ route('guru.pengaduan.show', $pengaduan->id) }}" class="inline-block py-1 px-2 bg-blue-600 border-2 border-blue-600 rounded hover:bg-blue-800 hover:border-blue-800 hover:py-1 hover:px-2">
+                                    <i class="bi bi-eye-fill text-white text-lg"></i>
+                                </a>
                             </div>
                         </td>
                     </tr>
