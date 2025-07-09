@@ -21,65 +21,61 @@
             <div class="p-1.5 min-w-full inline-block align-middle">
                 <div class="p-3 overflow-hidden dark:border-neutral-700">
                 <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700">
+                    @foreach ($konselings as $konseling)
                     <thead>
                     <tr>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">No</th>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Siswa</th>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Janji Temu</th>
                         <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Topik Masalah</th>
-                        <th scope="col" class="px-6 py-3 {{ $hasilKonseling->isNotEmpty() ? 'text-start' : 'text-end' }} text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Info Laporan</th>
-                        @if ($hasilKonseling->isNotEmpty())
+                        <th scope="col" class="px-6 py-3 {{ $konseling->hasilKonseling ? 'text-start' : 'text-end' }} text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Info Laporan</th>
+                        @if ($konseling->hasilKonseling)
                             <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Action</th>
                         @endif
                     </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                    @foreach ($konselings as $konseling)
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $konselings->firstItem() + $loop->index }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200w">{{ $konseling->siswa->nama }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200w">{{ $konseling->janji_temu }}</td>
                         <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200w">{{ $konseling->topik_masalah }}</td>
-                        <td class="px-6 py-4 {{ $hasilKonseling->isNotEmpty() ? 'text-start' : 'text-end' }} whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200w">
-                            @if($hasilKonseling->isNotEmpty())
-                            <form action="" method="GET">
+                        <td class="px-6 py-4 {{ $konseling->hasilKonseling ? 'text-start' : 'text-end' }} whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200w">
+                            @if($konseling->hasilKonseling)
+                            <a href="#"  class="py-2 px-3 gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                Laporan
+                            </a>
+                            {{-- <form action="" method="GET">
                                 <button class="py-2 px-3 gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
                                     Laporan
                                 </button>
-                            </form>
+                            </form> --}}
                             @else
-                                <form action="{{ route('guru.laporan.create', $konseling->id) }}" method="GET">
-                                    <button class="py-2 px-3 gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                                        Buat Laporan Konseling
-                                    </button>
-                                </form>
+                                <a href="{{ route('guru.laporan.create', $konseling->id) }}" class="py-2 px-3 gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                    Buat Laporan Konseling
+                                </a>
                             @endif
                         </td>
 
-                        @if($hasilKonseling->isNotEmpty())
-                            @foreach ($hasilKonseling as $laporan)
-                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <div class="flex justify-end">
-                                    <form action="{{ route('guru.laporan.edit', $laporan->id) }}" method="GET">
-                                        <button class="inline-block mx-2 py-1 px-2 bg-yellow-400 border-2 border-yellow-400 rounded hover:bg-yellow-600 hover:border-yellow-600 hover:py-1 hover:px-2" >
-                                            <i class="bi bi-pencil-fill text-white text-lg"></i>
-                                        </button>
-                                    </form>
-                                    <form action="{{ route('guru.laporan.delete', $laporan->id) }}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <button href="{{ route('logout')}}"  onclick="return confirm('Apakah anda yakin akan menghapus laporan ini?')" class="inline-block py-1 px-2 bg-red-600 border-2 border-red-600 rounded hover:bg-red-800 hover:border-red-800 hover:py-1 hover:px-2">
-                                        <i class="bi bi-trash-fill text-white text-lg"></i>
-                                    </button>
-                                </form>
-                                </div>
-                            </td>
-                            @endforeach
+                        @if($konseling->hasilKonseling)
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                            <div class="flex justify-end">
+                                <a href="{{ route('guru.laporan.edit', $konseling->hasilKonseling) }}" class="inline-block mx-2 py-1 px-2 bg-yellow-400 border-2 border-yellow-400 rounded hover:bg-yellow-600 hover:border-yellow-600 hover:py-1 hover:px-2">
+                                      <i class="bi bi-pencil-fill text-white text-lg"></i>
+                                </a>
+                                <form action="{{ route('guru.laporan.delete', $konseling->hasilKonseling) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button href="{{ route('logout')}}"  onclick="return confirm('Apakah anda yakin akan menghapus laporan ini?')" class="inline-block py-1 px-2 bg-red-600 border-2 border-red-600 rounded hover:bg-red-800 hover:border-red-800 hover:py-1 hover:px-2">
+                                    <i class="bi bi-trash-fill text-white text-lg"></i>
+                                </button>
+                            </form>
+                            </div>
+                        </td>
                         @endif
-
                     </tr>
-                    @endforeach
                     </tbody>
+                    @endforeach
                 </table>
                 <div class="py-1 px-4">
                     <nav class="flex items-center justify-center space-x-1" aria-label="Pagination">

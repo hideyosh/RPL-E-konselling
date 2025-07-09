@@ -110,7 +110,7 @@ dark:bg-neutral-800 dark:border-neutral-700" role="dialog" tabindex="-1" aria-la
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 " href="{{ route('siswa.konseling.index') }}">
+                        <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 " href="{{ route('siswa.laporan.index') }}">
                             Laporan
                         </a>
                     </li>
@@ -161,14 +161,14 @@ dark:bg-neutral-800 dark:border-neutral-700" role="dialog" tabindex="-1" aria-la
             <div id="projects-accordion-child" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300 hidden" role="region" aria-labelledby="projects-accordion">
             <ul class="ps-8 pt-1 space-y-1">
                 <li>
-                <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 " href="{{ route('guru.konseling.index') }}">
-                    Janji Temu
-                </a>
+                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 " href="{{ route('guru.konseling.index') }}">
+                        Janji Temu
+                    </a>
                 </li>
                 <li>
-                <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 " href="{{ route('guru.laporan.index') }}">
-                    Laporan
-                </a>
+                    <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-hidden focus:bg-gray-100 " href="{{ route('guru.laporan.index') }}">
+                        Laporan
+                    </a>
                 </li>
             </ul>
             </div>

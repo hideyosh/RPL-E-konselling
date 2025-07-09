@@ -16,7 +16,6 @@ class LaporanController extends Controller
         return view('guru.laporan.index', [
             'title' => 'Daftar Laporan Hasil Konseling',
             'konselings' => Konseling::where('status', 'selesai')->with(['siswa', 'hasilKonseling'])->latest()->paginate(10),
-            'hasilKonseling' => hasilKonseling::all('id'),
         ]);
     }
 

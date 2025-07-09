@@ -37,41 +37,67 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200w">{{ $konseling->janji_temu }}</td>
                         <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200w">{{ $konseling->topik_masalah }}</td>
                         <td class="capitalize px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200w">{{ $konseling->guru->nama }}</td>
-                        <td class="px-6 py-4 text-end whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200w">
-                            @if($hasilKonseling->isNotEmpty())
-                            <div x-data="{ open : false, showLaporan: {} }">
-                                <!--Tombol -->
-                                <button @click="open = true; showLaporan = {{ json_encode($konseling) }}" class="py-2 px-3 gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                                    Laporan
-                                </button>
-                                <!-- Popup -->
-                                <div x-show="open" x-transition
-                                    class="fixed inset-0 flex items-center justify-center z-50"
-                                    style="background-color: rgba(128, 128, 128, 0.3); display: none">
-                                    <div class="bg-white p-8 rounded shadow-lg w-96">
-                                        <div class="flex justify-between items-center">
-                                            <h2 class="text-xl font-bold">Laporan Hasil Konseling</h2>
-                                            <!-- Tombol X -->
-                                            <button @click="open = false" class="text-gray-500 hover:text-gray-700">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                        <div class="border-2 p-2 grid grid-cols-2">
-                                            <div class="border-2">
-                                                korel
+                        <td class="px-6 py-4 flex justify-end whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200w">
+                            @foreach ($hasilKonseling as $laporan)
+                                @if($hasilKonseling->isNotEmpty())
+                                    <div x-data="{ open : false, showLaporan: {} }">
+                                        <!--Tombol -->
+                                        <button @click="open = true; showLaporan = {{ json_encode($laporan) }}" class="py-2 px-3 gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                            Laporan
+                                        </button>
+                                        <!-- Popup Overlay -->
+                                        <div x-show="open" x-transition
+                                            class="fixed inset-0 z-50 flex items-center justify-center bg-black/30"
+                                            @click.self="open = false">
+
+                                            <!-- Popup Box -->
+                                            <div class="bg-white w-full max-w-md p-6 rounded-xl shadow-lg">
+                                                <!-- Header -->
+                                                <div class="flex justify-between items-center pb-2 mb-4">
+                                                    <h2 class="text-xl font-semibold text-gray-800">Laporan Hasil Konseling</h2>
+                                                    <button @click="open = false" class="text-gray-500 hover:text-gray-700">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                                            stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+
+                                                <!-- Content -->
+                                                <div class="space-y-3 text-sm text-gray-700">
+                                                    <div>
+                                                        <span class="font-medium">Topik Masalah:</span><br>
+                                                        <span class="capitalize">{{ $laporan->konseling->topik_masalah }}</span>
+                                                    </div>
+
+                                                    <div>
+                                                        <span class="font-medium">Tanggal Konseling:</span><br>
+                                                        {{ $laporan->konseling->janji_temu }}
+                                                    </div>
+
+                                                    <div>
+                                                        <span class="font-medium">Guru BK:</span><br>
+                                                        {{ $laporan->konseling->guru->nama }}
+                                                    </div>
+
+                                                    <div>
+                                                        <span class="font-medium">Ringkasan:</span><br>
+                                                        {{ ucfirst($laporan->ringkasan) }}
+                                                    </div>
+
+                                                    <div>
+                                                        <span class="font-medium">Catatan Guru:</span><br>
+                                                        {{ ucfirst($laporan->catatan_guru) }}
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="border-2">
-                                                dfwqfq
-                                            </div>
                                         </div>
+
                                     </div>
-                                </div>
-                            </div>
-                            @else
-                               <h1>Laporan tidak ada</h1>
-                            @endif
+                                @else
+                                <h1>Laporan tidak ada</h1>
+                                @endif
+                            @endforeach
                         </td>
                     </tr>
                     @endforeach
