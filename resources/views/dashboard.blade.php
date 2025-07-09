@@ -42,7 +42,7 @@
                   <tr>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">No</th>
                     <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Email</th>
-                    <th scope="col" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Role</th>
+                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Role</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
@@ -50,7 +50,7 @@
                   <tr>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">{{ $users->firstItem() + $loop->index }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $user->email }}</td>
-                    <td class="text-end px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $user->role }}</td>
+                    <td class="text-center px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">{{ $user->role }}</td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -78,17 +78,16 @@
 </div>
 @elseif(Auth::user()->role === 'guru')
 <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
-    <h1 class="font-bold text-xl">Selamat Datang di Layanan Konseling <br> SMKN 46 Jakarta</h1>
-    <div class="w-9/12">
-        <h1 class="font-normal text-base">Hai, siswa SMKN 46! Di sini kamu bisa mengajukan konseling dengan guru BK secara mudah dan cepat. Kami siap membantu kamu yang sedang mengalami masalah pribadi, akademik, maupun perencanaan masa depan.</h1>
+    <div class="w-7/12">
+         <img src="{{ asset('img/dashboard-guru.png') }}" alt="">
     </div>
 </div>
 @else
 <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
-    <h1 class="font-bold text-xl">Selamat Datang di Layanan Konseling <br> SMKN 46 Jakarta</h1>
-    <div class="w-9/12">
-        <h1 class="font-normal text-base">Hai, siswa SMKN 46! Di sini kamu bisa mengajukan konseling dengan guru BK secara mudah dan cepat. Kami siap membantu kamu yang sedang mengalami masalah pribadi, akademik, maupun perencanaan masa depan.</h1>
+    <div class="w-7/12">
+         <img src="{{ asset('img/dashboard-siswa.png') }}" alt="">
     </div>
+
 </div>
 @endif
 

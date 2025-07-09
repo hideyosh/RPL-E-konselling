@@ -31,19 +31,19 @@
                         <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700" role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-icons">
                             <div class="p-1 space-y-0.5">
                                 <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                    <input type="checkbox" name="status[]" value="menunggu" {{ in_array('menunggu', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="checkbox_belum">
+                                    <input type="checkbox" name="status[]" value="menunggu" {{ in_array('menunggu', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-indigo-600 focus:ring-indigo-500 checked:border-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800" id="checkbox_belum">
                                     <label for="hs-default-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Menunggu</label>
                                 </div>
                                 <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                    <input type="checkbox" name="status[]" value="dikonfirmasi" {{ in_array('dikonfirmasi', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
+                                    <input type="checkbox" name="status[]" value="dikonfirmasi" {{ in_array('dikonfirmasi', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-indigo-600 focus:ring-indigo-500 checked:border-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
                                     <label for="hs-checked-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Dikonfirmasi</label>
                                 </div>
                                 <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                    <input type="checkbox" name="status[]" value="dijadwalkan_ulang" {{ in_array('dijadwalkan_ulang', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
+                                    <input type="checkbox" name="status[]" value="dijadwalkan_ulang" {{ in_array('dijadwalkan_ulang', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-indigo-600 focus:ring-indigo-500 checked:border-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
                                     <label for="hs-checked-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Dijadwalkan Ulang</label>
                                 </div>
                                 <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                    <input type="checkbox" name="status[]" value="selesai" {{ in_array('selesai', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
+                                    <input type="checkbox" name="status[]" value="selesai" {{ in_array('selesai', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-indigo-600 focus:ring-indigo-500 checked:border-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
                                     <label for="hs-checked-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Selesai</label>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                 <div x-data="{ open: false }">
                     <div class="inline-flex gap-x-2">
                         <button @click="open = true"
-                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700">
+                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-indigo-700">
                         <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14" />
@@ -123,7 +123,7 @@
 
                             <div class="flex justify-end">
                             <button type="submit"
-                                class="py-2 px-6 text-sm font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700">
+                                class="py-2 px-6 text-sm font-medium rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">
                                 Submit
                             </button>
                             </div>
@@ -188,10 +188,10 @@
                                                 <!-- Form -->
                                                 <form :action="`/siswa/konseling/${editKonseling.id}`" method="POST">
                                                     @csrf
-                                                    @method('PUT')
+                                                    @method('patch')
                                                     <div class="mt-5 mb-5">
                                                         <label for="guru" class="block text-base font-medium mb-2 dark:text-white">Guru</label>
-                                                        <select name="guru_id" x-model="editKonseling.guru_id" class="capitalize font-normal py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                        <select name="guru_id" x-model="editKonseling.guru_id" class="capitalize font-normal py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                                             @foreach ($gurus as $guru)
                                                                 <option value="{{ $guru->id }}">{{ $guru->nama }}</option>
                                                             @endforeach
@@ -206,17 +206,17 @@
                                                                     <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
                                                                 </svg>
                                                             </div>
-                                                            <input type="text" name="janji_temu" x-model="editKonseling.janji_temu" class="datePicker py-2.5 sm:py-3 pe-10 px-4 block w-full border-gray-300 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Pilih Tanggal">
+                                                            <input type="text" name="janji_temu" x-model="editKonseling.janji_temu" class="datePicker py-2.5 sm:py-3 pe-10 px-4 block w-full border-gray-300 rounded-lg sm:text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Pilih Tanggal">
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <label for="topik_masalah" class="block text-sm font-medium mb-2 dark:text-white">Topik Masalah</label>
                                                         <div class="max-w-sm space-y-3">
-                                                                <textarea id="topik_masalah" name="topik_masalah" x-model="editKonseling.topik_masalah" class="py-2 px-3 sm:py-3 sm:px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Isi Topik Masalah"></textarea>
+                                                                <textarea id="topik_masalah" name="topik_masalah" x-model="editKonseling.topik_masalah" class="py-2 px-3 sm:py-3 sm:px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Isi Topik Masalah"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="flex justify-end">
-                                                        <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                                        <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
                                                             Submit
                                                         </button>
                                                     </div>
@@ -228,7 +228,7 @@
                                 <form action="{{ route('siswa.konseling.destroy', $konseling->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button href="{{ route('logout')}}"  onclick="return confirm('Apakah anda yakin akan menghapus janji konseling ini?')" class="inline-block py-1 px-2 bg-red-600 border-2 border-red-600 rounded hover:bg-red-800 hover:border-red-800 hover:py-1 hover:px-2">
+                                    <button href="{{ route('logout')}}"class="btn-delete inline-block py-1 px-2 bg-red-600 border-2 border-red-600 rounded hover:bg-red-800 hover:border-red-800 hover:py-1 hover:px-2">
                                         <i class="bi bi-trash-fill text-white text-lg"></i>
                                     </button>
                                 </form>
@@ -263,4 +263,29 @@
     </div>
   </div>
   <!-- End Card -->
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.btn-delete').forEach(button => {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Apakah anda yakin akan menghapus janji temu ini?',
+                    text: "Tindakan ini tidak dapat dibatalkan.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        button.closest('form').submit();
+                    }
+                });
+            });
+        });
+    });
+
+    </script>
   @endsection

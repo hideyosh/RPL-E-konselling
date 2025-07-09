@@ -23,12 +23,12 @@
                         <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700" role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-with-icons">
                             <div class="p-1 space-y-0.5">
                                 <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                    <input type="checkbox" name="status[]" value="belum_dibaca" {{ in_array('belum_dibaca', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="checkbox_belum">
+                                    <input type="checkbox" name="status[]" value="belum_dibaca" {{ in_array('belum_dibaca', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-indigo-600 focus:ring-indigo-500 checked:border-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800" id="checkbox_belum">
                                     <label for="hs-default-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Belum Dibaca</label>
                                 </div>
 
                                 <div class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800">
-                                    <input type="checkbox" name="status[]" value="dibaca" {{ in_array('dibaca', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-blue-600 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
+                                    <input type="checkbox" name="status[]" value="dibaca" {{ in_array('dibaca', request()->get('status', [])) ? 'checked' : '' }} onchange="this.form.submit()" class="shrink-0 mt-0.5 border-gray-200 rounded-sm text-indigo-600 focus:ring-indigo-500 checked:border-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-indigo-500 dark:checked:border-indigo-500 dark:focus:ring-offset-gray-800" id="hs-checked-checkbox">
                                     <label for="hs-checked-checkbox" class="text-sm text-gray-500 ms-3 dark:text-neutral-400">Dibaca</label>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                 <div x-data="{ open : false }">
                     <!-- Tombol -->
                     <div class="inline-flex gap-x-2">
-                    <button @click="open = true" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                    <button @click="open = true" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
                         <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M5 12h14" />
                         <path d="M12 5v14" />
@@ -75,7 +75,7 @@
                                 @csrf
                                 <div class="mt-5 mb-5">
                                     <label for="guru" class="block text-base font-medium mb-2 dark:text-white">Guru</label>
-                                    <select name="guru_id" class="capitalize py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                    <select name="guru_id" class="capitalize py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                     <option selected="">Pilih guru penerima</option>
                                         @foreach ($gurus as $guru)
                                             <option class="capitalize" value="{{ $guru->id }}">{{ $guru->nama }}</option>
@@ -84,10 +84,10 @@
                                 </div>
                                 <div>
                                     <label for="isi_pengaduan" class="block text-sm font-medium mb-2 dark:text-white">Isi Pengaduan</label>
-                                    <textarea name="isi_pengaduan" id="textarea-label" class="py-2 px-3 sm:py-3 sm:px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Tulis isi pengaduan disini..."></textarea>
+                                    <textarea name="isi_pengaduan" id="textarea-label" class="py-2 px-3 sm:py-3 sm:px-4 block w-full border-gray-200 rounded-lg sm:text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Tulis isi pengaduan disini..."></textarea>
                                 </div>
                                 <div class="flex justify-end">
-                                    <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                    <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
                                         Submit
                                     </button>
                                 </div>
@@ -166,7 +166,7 @@
                                                             @csrf
                                                             <div class="mt-5 mb-5">
                                                                 <label for="guru" class="block text-base font-medium mb-2 dark:text-white">Guru</label>
-                                                                <select name="guru_id" x-model="editPengaduan.guru_id" class="capitalize font-normal py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                                                <select name="guru_id" x-model="editPengaduan.guru_id" class="capitalize font-normal py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                                                     @foreach ($gurus as $guru)
                                                                         <option class="capitalize" value="{{ $guru->id }}">{{ $guru->nama }}</option>
                                                                     @endforeach
@@ -174,10 +174,10 @@
                                                             </div>
                                                             <div>
                                                                 <label for="isi_pengaduan" class="block text-sm font-medium mb-2 dark:text-white">Isi Pengaduan</label>
-                                                                <textarea name="isi_pengaduan" x-model="editPengaduan.isi_pengaduan" id="textarea-label" class="font-normal py-2 px-3 sm:py-3 sm:px-4 block w-full   border-gray-200 rounded-lg sm:text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Tulis isi pengaduan disini..."></textarea>
+                                                                <textarea name="isi_pengaduan" x-model="editPengaduan.isi_pengaduan" id="textarea-label" class="font-normal py-2 px-3 sm:py-3 sm:px-4 block w-full   border-gray-200 rounded-lg sm:text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" rows="3" placeholder="Tulis isi pengaduan disini..."></textarea>
                                                             </div>
                                                             <div class="flex justify-end">
-                                                                <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                                                <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
                                                                     Submit
                                                                 </button>
                                                             </div>

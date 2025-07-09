@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::delete('/siswa/{siswa}', 'destroySiswa')->name('siswa.destroy');
         });
     });
-
+    
     Route::middleware('siswa')->prefix('siswa')->name('siswa.')->group(function () {
         Route::middleware('dataDiri')->group(function () {
             Route::view('/dashboard', 'dashboard')->name('dashboard');

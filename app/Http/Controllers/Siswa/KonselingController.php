@@ -62,6 +62,7 @@ class KonselingController extends Controller
 
     public function destroy(Konseling $konseling) {
         $konseling->delete();
+        Alert::success('Berhasil', 'Janji Temu Telah Dihapus!');
         return redirect()->route('siswa.konseling.index');
     }
 

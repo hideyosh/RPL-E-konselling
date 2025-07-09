@@ -16,7 +16,7 @@
             <div x-data="{ open : false }">
                 <!-- Tombol -->
                 <div class="inline-flex gap-x-2">
-                  <button @click="open = true" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                  <button @click="open = true" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-500 text-white hover:bg-indigo-600 focus:outline-hidden focus:bg-indigo-600 disabled:opacity-50 disabled:pointer-events-none">
                     <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                       <path d="M5 12h14" />
                       <path d="M12 5v14" />
@@ -54,7 +54,7 @@
                              <div class="mt-5 mb-5">
                                 <label for="email" class="block text-base font-medium mb-2 dark:text-white">Email address</label>
                                 <div class="relative">
-                                    <input type="email" name="email" class="py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="example@gmail.com">
+                                    <input type="email" name="email" class="py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="example@gmail.com">
                                     <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
                                         <svg class="shrink-0 size-4 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <rect width="20" height="16" x="2" y="4" rx="2"></rect>
@@ -66,7 +66,7 @@
                             <div class="mb-5">
                                 <label for="password" class="block text-base font-medium mb-2 dark:text-white">Password</label>
                                 <div class="relative">
-                                    <input type="password" name="password" class="password py-2.5 sm:py-3 px-4 ps-11 blpassword ock w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ">
+                                    <input type="password" name="password" class="password py-2.5 sm:py-3 px-4 ps-11 blpassword ock w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none ">
                                     <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock shrink-0 size-4 text-gray-400" viewBox="0 0 16 16">
                                             <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
@@ -83,12 +83,12 @@
                             <div>
                                 <input type="hidden" name="role" value="siswa">
                                 <label for="role" class="block text-base font-medium mb-2 dark:text-white">Role</label>
-                                <select name="role" disabled class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ">
+                                <select name="role" disabled class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none ">
                                     <option value="siswa">Siswa</option>
                                 </select>
                             </div>
                             <div class="flex justify-end">
-                                <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
                                     Submit
                                 </button>
                             </div>
@@ -125,8 +125,8 @@
                             <div class="flex justify-end">
                                <!-- Tombol -->
                                 <div x-data="{ open : false, editUser: {} }">
-                                    <button @click="open = true; editUser = {{ json_encode($siswa) }}" class="inline-block p-2" >
-                                        <i class="bi bi-pencil-fill text-blue-600 text-lg"></i>
+                                    <button @click="open = true; editUser = {{ json_encode($siswa) }}" class="inline-block mx-2 py-1 px-2 bg-yellow-400 border-2 border-yellow-400 rounded hover:bg-yellow-500 hover:border-yellow-500 hover:py-1 hover:px-2" >
+                                        <i class="bi bi-pencil-fill text-white text-lg"></i>
                                     </button>
 
                                     <!-- Popup -->
@@ -152,7 +152,7 @@
                                                 <div class="mt-5 mb-5">
                                                     <label for="email" class="block text-base font-medium mb-2 dark:text-white">Email address</label>
                                                     <div class="relative">
-                                                        <input type="email" name="email" x-model="editUser.email" class="py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ">
+                                                        <input type="email" name="email" x-model="editUser.email" class="py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none ">
                                                         <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
                                                             <svg class="shrink-0 size-4 text-gray-400 dark:text-neutral-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
@@ -164,7 +164,7 @@
                                                 <div class="mb-5">
                                                     <label for="password" class="block text-base font-medium mb-2 dark:text-white">Password</label>
                                                     <div class="relative">
-                                                        <input type="password" name="password" x-model="editUser.password" class="password py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ">
+                                                        <input type="password" name="password" x-model="editUser.password" class="password py-2.5 sm:py-3 px-4 ps-11 block w-full border-gray-200 rounded-lg sm:text-sm focus:z-10 focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none ">
                                                         <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill-lock shrink-0 size-4 text-gray-400" viewBox="0 0 16 16">
                                                                 <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
@@ -180,13 +180,13 @@
                                                 </div>
                                                 <div>
                                                     <label for="role" class="block text-base font-medium mb-2 dark:text-white">Role</label>
-                                                    <select name="role"  x-model="editUser.role" class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none ">
+                                                    <select name="role"  x-model="editUser.role" class="py-3 px-4 pe-9 block w-full border-gray  -200 rounded-lg text-sm focus:border-indigo-500 focus:ring-indigo-500 disabled:opacity-50 disabled:pointer-events-none ">
                                                         <option value="siswa">Siswa</option>
                                                         <option value="guru">Guru</option>
                                                     </select>
                                                 </div>
                                                 <div class="flex justify-end">
-                                                    <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                                    <button type="submit" class="py-2 px-6 mt-5 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
                                                         Submit
                                                     </button>
                                                 </div>
@@ -197,8 +197,8 @@
                                 <form action="{{ route('admin.siswa.destroy', $siswa->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button type="button" class="btn-delete inline-block p-2">
-                                        <i class="bi bi-trash-fill text-red-600 text-lg"></i>
+                                    <button type="button" class="btn-delete inline-block py-1 px-2 bg-red-600 border-2 border-red-600 rounded hover:bg-red-700 hover:border-red-800 hover:py-1 hover:px-2">
+                                        <i class="bi bi-trash-fill text-white text-lg"></i>
                                     </button>
                                 </form>
                             </div>
@@ -232,7 +232,7 @@
     </div>
   </div>
   <!-- End Card -->
-  
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('.btn-delete').forEach(button => {

@@ -27,7 +27,7 @@ class PengaduanController extends Controller
     }
 
     public function show(Pengaduan $pengaduan) {
-        if ($pengaduan->status === 'belum dibaca') {
+        if ($pengaduan->status === 'belum_dibaca') {
             $pengaduan->update(['status' => 'dibaca']);
             Alert::success('Berhasil', 'Pengaduan telah terbaca');
         }

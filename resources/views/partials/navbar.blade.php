@@ -18,19 +18,19 @@
 
           <!-- Dropdown -->
           <div class="hs-dropdown [--placement:bottom-right] relative inline-flex">
-            <button id="hs-dropdown-account" type="button" class="size-9.5 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border-2   text-gray-800 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-white" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                <i class="bi bi-person-fill text-xl"></i>
+            <button id="hs-dropdown-account" type="button" class="size-9.5 inline-flex justify-center bg-indigo-500 items-center gap-x-2 text-sm font-semibold rounded-full text-gray-800 focus:outline-hidden disabled:opacity-50 disabled:pointer-events-none dark:text-white" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
+                <i class="bi bi-person-fill text-xl text-white"></i>
             </button>
 
             <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg mt-2 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full" role="menu" aria-orientation="vertical" aria-labelledby="hs-dropdown-account">
               <div class="py-3 px-5 bg-gray-100 rounded-t-lg dark:bg-neutral-700">
                 <p class="text-sm text-gray-500 dark:text-neutral-500">Signed in as</p>
                 @if(Auth::user()->role === 'siswa' && Auth::user()->siswa  && Auth::user()->siswa->nama !== NULL)
-                    <p class="capitalize text-sm font-medium text-gray-800 dark:text-neutral-200">{{ Auth::user()->siswa->nama }}</p>
+                    <p class="capitalize text-sm font-medium text-gray-800 dark:text-neutral-200">{{ Auth::user()->siswa->nama }} | {{ Auth::user()->role }} </p>
                 @elseif(Auth::user()->role === 'guru' && Auth::user()->guru && Auth::user()->guru->nama !== NULL)
-                    <p class="capitalize text-sm font-medium text-gray-800 dark:text-neutral-200">{{ Auth::user()->guru->nama }}</p>
+                    <p class="capitalize text-sm font-medium text-gray-800 dark:text-neutral-200">{{ Auth::user()->guru->nama }} | {{ Auth::user()->role }}</p>
                 @else
-                    <p class="text-sm font-medium text-gray-800 dark:text-neutral-200">{{ Auth::user()->email }}</p>
+                    <p class="text-sm font-medium text-gray-800 dark:text-neutral-200">{{ Auth::user()->email }} | {{ Auth::user()->role }}</p>
                 @endif
               </div>
               <div class="p-1.5 space-y-0.5">

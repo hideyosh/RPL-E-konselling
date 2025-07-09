@@ -22,7 +22,7 @@
   <meta property="og:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
   <meta property="og:description" content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
   <meta property="og:image" content="https://preline.co/assets/img/og-image.png">
-  
+
 
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
@@ -122,7 +122,7 @@
   <!-- JS PLUGINS -->
   <!-- Required plugins -->
   <script src="https://cdn.jsdelivr.net/npm/preline/dist/index.js"></script>
-  <script src="./assets/vendor/preline/dist/preline.js"></script>
+  {{-- <script src="./assets/vendor/preline/dist/preline.js"></script> --}}
 
   <!-- Alpine Core -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>

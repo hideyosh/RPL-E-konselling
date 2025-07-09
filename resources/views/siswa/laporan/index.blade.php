@@ -42,7 +42,7 @@
                                 @if($hasilKonseling->isNotEmpty())
                                     <div x-data="{ open : false, showLaporan: {} }">
                                         <!--Tombol -->
-                                        <button @click="open = true; showLaporan = {{ json_encode($laporan) }}" class="py-2 px-3 gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                                        <button @click="open = true; showLaporan = {{ json_encode($laporan) }}" class="py-2 px-3 gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-hidden focus:bg-indigo-700 disabled:opacity-50 disabled:pointer-events-none">
                                             Laporan
                                         </button>
                                         <!-- Popup Overlay -->
